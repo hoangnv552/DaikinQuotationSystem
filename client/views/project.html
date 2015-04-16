@@ -1,0 +1,40 @@
+<div class="project">
+	<div class="projectInfo">
+		<h3>PROJECT INFORMATION</h3>
+	</div>
+	<div class="project-search">
+		<input type="text" placeholder="Search project name" ng-model="query">
+		<div class="search-icon"><img src="./img/icon-search.png"></div>
+	</div>
+	<div class="pagination">
+		<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="./views/pagination.tpl.html"></dir-pagination-controls>
+	</div>
+	<div class="project-table">
+		<table ng-table="tableParams" class="table">
+			<tr>
+				<th class="th-width">Project Name</th>
+				<th>Client Name</th>
+				<th>Estimation Name</th>
+				<th>Revision</th>
+				<th>Create date</th>
+				<th>End date</th>
+				<th>Status</th>
+			</tr>
+			<tr dir-paginate="project in projects | filter: query | itemsPerPage: pageSize" current-page="currentPage">
+				<td class="td-str"><a href="">{{project.projectName}}</a></td>
+				<td class="td-str"><a href="">{{project.clientName}}</a></td>
+				<td class="td-str"><p>{{project.estimationName}}</p></td>
+				<td class="td-num">{{project.revison}}</td>
+				<td class="td-num">{{project.createDate}}</td>
+				<td class="td-num">{{project.endDate}}</td>
+				<td class="td-num">{{project.status}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="pagination">
+		<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="./views/pagination.tpl.html"></dir-pagination-controls>
+	</div>
+	<div class="button">
+		<button><a href="#">New Project<a></button>
+	</div>
+</div>

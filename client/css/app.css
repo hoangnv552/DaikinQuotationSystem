@@ -1,0 +1,148 @@
+body{
+	margin: 0;
+	font-family: sans-serif;
+}
+.contents{
+	width: 1030px;
+	margin: 0 auto;
+}
+.header{
+	width: 1000px;
+	margin: 0 auto;
+	height: 145px;
+}
+.banner{
+	height: 85px;
+	width: 100%;
+}
+.banner img{
+	margin-top: 15px;
+}
+.banner h2{
+	margin-top: 0px;
+	font-size: 16px;
+	color: #0083d1;
+	font-weight: normal;
+}
+.banner .login{
+	float: right;
+	width: 85px;
+	height: 20px;
+	margin-top: -50px;
+}
+.login .icon-login{
+	float: left;
+	margin-top: -12px;
+}
+.login .icon-comma{
+	float: right;
+	margin-top: -12px;
+}
+.login a{
+	color: #0083d1;
+	float: left;
+	margin-left: 8px;
+	text-decoration: none;
+}
+.header .menu{
+	float: left;
+	background: #1f1a17;
+	width: 1030px;
+	height: 45px;
+	margin-left: -15px;
+}
+.menu ul{
+	margin: 0;
+	padding: 0;
+}
+.header .menu ul li{
+	list-style: none;
+	float: left;
+	padding: 12px 20px;
+	position: relative;
+}
+.header .menu ul li a{
+	text-decoration: none;
+	color: #fff;
+}
+.header .menu ul li:hover{
+	background: #c2c2c2;
+}
+.menu ul li ul{
+	display: none;
+	position: absolute;
+	background: #c2c2c2;
+	top: 42px;
+	left: 0px;
+}
+.menu ul li:hover ul{
+	display: block;
+	background: #1f1a17;
+}
+.menu ul li ul li{
+	width: 130px;
+	clear: both;
+}
+
+/*----------Footer---------*/
+.footer{
+	float: left;
+	width: 100%;
+	height: 60px;
+	border-top: 1px solid #d1d1d1;
+	margin-top: 40px;
+}
+.footer h2{
+	font-size: 16px;
+	font-weight: normal;
+	color: #787878;
+}
+.header .menu ul .active{
+	background: #c2c2c2;
+}
+.container{
+	border: 1px solid #d1d1d1;
+}
+.project{
+	width: 1000px;
+	margin: 0 auto;
+}
+.projectInfo{
+	width: 100%;
+}
+.projectInfo h3{
+	color: #0083d1;
+	font-size: 16px;
+}
+.project-search {
+	position: relative;
+}
+.project-search input{
+	width: 550px;
+	height: 31px;
+	border: 1px solid #E1E1E1;
+}
+.button button{
+	background: #0083d1;
+	border: none;
+	width: 110px;
+	height: 45px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+.button button a{
+	text-decoration: none;
+	color: #fff;
+}
+.search-icon{
+	width: 45px;
+	height: 34px;
+	background: #bcbcbc;
+	position: absolute;
+	left: 506px;
+	top: 0px;
+	cursor: pointer;
+}
+.search-icon img{
+	margin: 10px 16px;
+}

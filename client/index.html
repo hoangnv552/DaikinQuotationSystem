@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" ng-app="daikinApp">
+<head>
+	<meta charset="utf-8">
+	<title>Daikin Quatation System</title>
+
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/partials.css">
+	<link rel="stylesheet" href="css/popup.css">
+	<link rel="stylesheet" href="vendors/ngDialog/css/ngDialog.css">
+	<link rel="stylesheet" href="vendors/ngDialog/css/ngDialog-theme-default.css">
+
+	<script src="vendors/angular/angular.js"></script>
+
+	<script src="vendors/firebase/firebase.js"></script>
+	<script src="vendors/angularfire/dist/angularfire.min.js"></script>
+
+	<script src="vendors/angular-cookies/angular-cookies.js"></script>
+	<script src="vendors/angular-resource/angular-resource.js"></script>
+	<script src="vendors/angular-route/angular-route.js"></script>
+	<script src="vendors/angular-utils-pagination/dirPagination.js"></script>
+	<script src="vendors/ngDialog/js/ngDialog.min.js"></script>
+
+	<script src="js/app.js"></script>
+
+	<script src="js/services/data.js"></script>
+
+	<script src="js/controllers/controller.js"></script>
+	<script src="js/controllers/login.js"></script>
+	<script src="js/controllers/dashbroad.js"></script>
+	<script src="js/controllers/quotation.js"></script>
+	<script src="js/controllers/project.js"></script>
+	<script src="js/controllers/client.js"></script>
+	<script src="js/controllers/menu.js"></script>
+</head>
+<body>
+
+<div class="contents">
+	<div class="header">
+		<div class="banner">
+			<img src="./img/logo.png" alt="">
+			<h2>Daikin Quatation Sytems</h2>
+			<div class="login">
+				<span class="icon-login"><img src="./img/icon-login.png"></span>
+				<a href="#/login">Logout</a>
+				<span class="icon-comma"><img src="./img/comma.png"></span>
+			</div>
+		</div>
+		<div class="menu" ng-controller="menuController">
+			<ul>
+				<li ng-class="{active: isActive('/dashbroad')}"><a href="#/dashbroad">Dashbroad</a></li>
+				<li ng-class="{active: isActive('/quotations') || isActive('/create-quotation')}">
+					<a href="">Quotation</a>
+					<ul>
+						<li><a href="#/quotations">List Quotation</a></li>
+						<li><a href="#/quotations/new">Create Quotation</a></li>
+					</ul>
+				</li>
+				<li ng-class="{active: isActive('/projects')}">
+					<a href="#/projects">Project</a>
+					<ul>
+						<li><a href="#/projects">List Project</a></li>
+						<li><a href="#/projects">Create Project</a></li>
+					</ul>
+				</li>
+				<li ng-class="{active: isActive('/clients')}">
+					<a href="#/clients">Client</a>
+					<ul>
+						<li><a href="#/clients">List Client</a></li>
+						<li><a href="#/clients">Create Client</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="container">
+		<div ng-view class="view-frame"></div>
+	</div>
+	<div class="footer">
+		<h2>DAIKIN QUATATION SYSTEM, 2015</h2>
+	</div>
+</div>
+
+</body>
+</html>

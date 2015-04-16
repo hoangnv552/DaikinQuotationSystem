@@ -1,0 +1,53 @@
+;(function() {
+	'use strict';
+
+	var daikinApp = angular.module('daikinApp', [
+			'ngRoute',
+			'daikinControllers',
+			'daikinServices',
+			'firebase'
+		]);
+
+	daikinApp.config(['$routeProvider', function($routeProvider) {
+		$routeProvider.
+			when('/login', {
+				templateUrl: 'views/login.html',
+				controller: 'loginCtrl'
+			}).
+			when('/dashbroad', {
+				templateUrl: 'views/dashbroad.html',
+				controller: 'dashbroadCtrl'
+			}).
+			when('/quotations', {
+				templateUrl: 'views/quotation.html',
+				controller: 'quotationCtrl'
+			}).
+			when('/quotations/new', {
+				templateUrl: 'views/quotation-detail.html',
+				controller: 'quotationCtrl'
+			}).
+			when('/quotations/edit/:id', {
+				templateUrl: 'views/quotation-detail.html',
+				controller: 'quotationCtrl'
+			}).
+			// when('/quotation-edit', {
+			// 	templateUrl: 'views/quotation-edit.html',
+			// 	controller: 'quotationCtrl'
+			// }).
+			when('/projects', {
+				templateUrl: 'views/project.html',
+				controller: 'projectCtrl'
+			}).
+			when('/clients', {
+				templateUrl: 'views/client.html',
+				controller: 'clientCtrl'
+			}).
+			when('/create-quotation', {
+				templateUrl: 'views/create-quotation.html',
+				controller: 'quotationCtrl'
+			}).
+			otherwise({
+				redirectTo: '/dashbroad'
+			});
+	}]);
+})();
