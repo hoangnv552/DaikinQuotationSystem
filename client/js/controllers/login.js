@@ -2,7 +2,7 @@
 	'use strict';
 
 	var loginCtrl = function($scope) {
-		$scope.demo = 'aaaaaaaaaa';
+		$scope.login = true;
 	}
 
 	loginCtrl.$inject = ['$scope'];

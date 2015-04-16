@@ -1,3 +1,137 @@
 <div id="daikinModal">
-<p>aaaaaaaaaaaaaaa</p>
+	<div class="menuModa">
+		<daikin-tabs>
+			<daikin-pane class="heo" title="Expess Import">
+				<div class="expess">
+					<p>Import Xpess CSV File</p>
+					<input type="file" class="expess-input">
+					<button>Import</button>
+				</div>
+			</daikin-pane>
+			<daikin-pane title="Outdoor Untils">
+				<div class="outdoor">
+					<div class="outdoor-search">
+						<p>Search</p>
+						<div class="input-import">
+							<input type="radio" name="name" id="model" value="male">
+							<label for="model">Model name</label>
+							<input type="radio" id="series" name="name" value="female">
+							<label for="series">Series</label>
+						</div>
+					</div>
+					<div class="out-search-text">
+						<input type="text" class="out-input">
+						<button>Search</button>
+					</div>
+					<div class="import-table">
+						<table ng-table="tableParams" class="table">
+							<thead>
+								<tr>
+									<th class="th-with-import">Check</th>
+									<th>Model name</th>
+									<th>Unit type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="td-num"><input type="checkbox"></td>
+									<td class="td-str"><p>RXQ6TTL</p></td>
+									<td class="td-str"><p>VRV4</p></td>
+								</tr>
+								<tr>
+									<td class="td-num"><input type="checkbox"></td>
+									<td class="td-str"><p>RXQ6TTLE</p></td>
+									<td class="td-str"><p>VRV4</p></td>
+								</tr>
+								<tr>
+									<td class="td-num"><input type="checkbox"></td>
+									<td class="td-str"><p>RXQ6TY1</p></td>
+									<td class="td-str"><p>VRV4</p></td>
+								</tr>
+								<tr>
+									<td class="td-num"><input type="checkbox"></td>
+									<td class="td-str"><p>RXQ6TY14</p></td>
+									<td class="td-str"><p>VRV4</p></td>
+								</tr>
+								<tr>
+									<td class="td-num"><input type="checkbox"></td>
+									<td class="td-str"><p>RXQ6TY14E</p></td>
+									<td class="td-str"><p>VRV4</p></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="import-button">
+						<button>Add</button>
+					</div>
+				</div>
+			</daikin-pane>
+			<daikin-pane title="Indoor Untils">
+				<div class="outdoor">
+					<div class="outdoor-search">
+						<p>Search</p>
+						<div class="input-import">
+							<input type="radio" name="name" id="model" value="male">
+							<label for="model">Model name</label>
+							<input type="radio" id="series" name="name" value="female">
+							<label for="series">Series</label>
+						</div>
+					</div>
+					<div class="out-search-text">
+						<input type="text" class="out-input">
+						<button>Search</button>
+					</div>
+					<div class="import-table">
+						<table ng-table="tableParams" class="table">
+							<thead>
+								<tr>
+									<th class="th-with-import">Check</th>
+									<th>Model name</th>
+									<th>Unit type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="td-num"><input type="checkbox"></td>
+									<td class="td-str"><p>FXFQ50PVE</p></td>
+									<td class="td-str"><p>Ceilling Mounted</p></td>
+								</tr>
+								<tr>
+									<td class="td-num"><input type="checkbox"></td>
+									<td class="td-str"><p>FXFQ50PVE4</p></td>
+									<td class="td-str"><p>Ceilling Mounted</p></td>
+								</tr>
+								<tr>
+									<td class="td-num"><input type="checkbox"></td>
+									<td class="td-str"><p>FXFQ50PVED</p></td>
+									<td class="td-str"><p>Ceilling Mounted</p></td>
+								</tr>
+								<tr>
+									<td class="td-num"><input type="checkbox"></td>
+									<td class="td-str"><p>FXFQ50PVET</p></td>
+									<td class="td-str"><p>VRV4</p></td>
+								</tr>
+								<tr>
+									<td class="td-num"><input type="checkbox"></td>
+									<td class="td-str"><p>FXFQ50PVEM</p></td>
+									<td class="td-str"><p>Ceilling Mounted</p></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="import-button">
+						<button>Add</button>
+					</div>
+				</div>
+			</daikin-pane>
+			<daikin-pane title="Accessories">
+				<h4>Accessories</h4>
+				<em>Mauris elementum elementum enim at suscipit.</em>
+			</daikin-pane>
+			<daikin-pane title="Others">
+				<h4>Others</h4>
+				<em>Mauris elementum elementum enim at suscipit.</em>
+			</daikin-pane>
+		</daikin-tabs>
+	</div>
 </div>

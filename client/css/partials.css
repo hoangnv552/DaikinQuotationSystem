@@ -38,7 +38,7 @@
 .table th{
 	font-weight: normal;
 	background: #0083d1;
-	height: 58px;
+	height: 40px;
 	margin: 0px;
 	padding: 0;
 	color: #ffffff;
@@ -49,7 +49,7 @@ table, th, td{
 	font-size: 14px;
 }
 .table td{
-	height: 60px;
+	height: 50px;
 }
 .table td a{
 	color: #0083d1;
@@ -190,7 +190,6 @@ table, th, td{
 .quotation-memo textarea{
 	width: 100%;
 	font-family: sans-serif;
-  	font-size: 16px;
 	height: 125px;
 	margin-top: 25px;
 	border: 1px solid #e7e7e7;
@@ -274,4 +273,76 @@ table, th, td{
 	position: absolute;
 	bottom: 10px;
 	right: 48px;
+}
+
+/*-------For client new----------*/
+/*Css for New project site*/
+.clearfix:after{
+	visibility: hidden;
+    display: block;
+    content: " ";
+    clear: both;
+}
+.header-content {
+	background-color: #f4f4f2;
+	height: 65px;
+	padding-top: 26px;
+}
+
+.header-content h3{
+	color: #0083d1;
+	margin-left: 13px;
+	margin-top: 0;
+}
+.table-style-common {
+	width: 100%;
+	border: none;
+
+}
+
+.table-style-common td{
+	border: none;
+}
+
+.td-title {
+	width: 28%;
+	padding-left: 47px;
+}
+.box-quotation-project {
+	width: 585px;
+	margin-top: 50px;
+	margin-left: 220px;
+	border: 1px solid #cfcfcf;
+	border-radius: 5px;
+	background-color: #f4f4f2;
+
+}
+
+.bacground-white {
+	background-color: #ffffff;
+	border-radius: 5px 5px 0 0;
+}
+.input-project {
+	width: 385px;
+  	height: 30px;
+  	padding: 0;
+  	margin-top: 13px;
+}
+.save-button{
+	float: right;
+	margin: 15px 33px 50px 0;
+}
+.save-button button{
+	border: none;
+	color: #fff;
+	height: 30px;
+	width: 70px;
+	cursor: pointer;
+}
+.save-button .save{
+	background: #0083d1;
+}
+.save-button .cancel{
+	background: #acacac;
+	margin-left: 5px;
 }

@@ -1,5 +1,135 @@
 #daikinModal{
-	width: 600px;
-	height: 500px;
+	width: 800px;
+	width: 104%;
+  	height: 630px;
+  	margin-left: -15px;
+  	margin-top: -36px;
+}
+.menuModa{
+	width: 100%;
+	height: 52px;
 	background: #0083d1;
 }
+.menuModa ul{
+	margin: 0px;
+	padding: 0px;
+	width: 800px;
+  	height: 55px;
+}
+.menuModa ul li{
+	list-style: none;
+	float: left;
+	padding: 15px 30px;
+}
+.menuModa ul li a{
+	text-decoration: none;
+	color: #ffffff;
+	font-size: 14px;
+}
+.menuModa ul .active a{
+	background: #ffffff;
+	color: #000000;
+}
+.menuModa ul .active{
+	background: #ffffff;
+	color: #000000;
+}
+.menuModa .expess{
+	width: 600px;
+	height: 100px;
+	margin-top: 140px;
+  	margin-left: 112px;
+  	float: left;
+  	position: relative;
+}
+.expess input{
+	width: 550px;
+  	height: 31px;
+  	border: 1px solid #E1E1E1;
+  	font-size: 18px;
+}
+.expess button{
+	position: absolute;
+	background: #7b7a7a;
+	color: #fff;
+	border: 0px;
+	padding: 8px 10px;
+	right: 51px;
+	cursor: pointer;
+	top: 55px;
+}
+/*--------Out door-------*/
+.menuModa .outdoor{
+	width: 760px;
+	height: 530px;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+.outdoor .outdoor-search{
+	width: 100%;
+	height: 50px;
+	float: left;
+}
+.outdoor .outdoor-search p{
+	font-weight: bold;
+	float: left;
+}
+.input-import{
+	float: left;
+	margin-top: 16px;
+ 	margin-left: 12px;
+}
+.out-search-text{
+	height: 35px;
+  	width: 100%;
+  	float: left;
+  	position: relative;
+}
+.out-search-text input{
+	width: 420px;
+  	height: 35px;
+  	border: 1px solid #E1E1E1;
+}
+.out-search-text button{
+	position: absolute;
+	background: #7b7a7a;
+	color: #fff;
+	border: 0px;
+	padding: 9px 10px;
+	left: 359px;
+	top: 1px;
+	cursor: pointer;
+}
+/*--------------Import table--------------*/
+.import-table{
+	width: 100%;
+	height: 390px;
+	float: left;
+	margin-top: 20px;
+}
+.import-button{
+	width: 60px;
+	height: 40px;
+	float: right;
+	background: #E1E1E1;
+	margin-top: 13px;
+}
+.import-button button{
+	border: none;
+	background: #0083d1;
+	color: #ffffff;
+	padding: 12px 19px;
+	cursor: pointer;
+}
+.th-with-import{
+	width: 100px;
+}
+/*.import-table .table tbody{
+	display: block;
+}
+.import-table .table tbody {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+*/

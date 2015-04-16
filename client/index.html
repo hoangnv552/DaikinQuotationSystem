@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="css/popup.css">
 	<link rel="stylesheet" href="vendors/ngDialog/css/ngDialog.css">
 	<link rel="stylesheet" href="vendors/ngDialog/css/ngDialog-theme-default.css">
+	<link rel="stylesheet" href="css/colorbox.css">
 
 	<script src="vendors/angular/angular.js"></script>
 
@@ -32,6 +33,8 @@
 	<script src="js/controllers/project.js"></script>
 	<script src="js/controllers/client.js"></script>
 	<script src="js/controllers/menu.js"></script>
+
+	<script src="js/directives/tabs.js"></script>
 </head>
 <body>
 
@@ -50,24 +53,24 @@
 			<ul>
 				<li ng-class="{active: isActive('/dashbroad')}"><a href="#/dashbroad">Dashbroad</a></li>
 				<li ng-class="{active: isActive('/quotations') || isActive('/create-quotation')}">
-					<a href="">Quotation</a>
+					<a href="#/quotations">Quotation</a>
 					<ul>
 						<li><a href="#/quotations">List Quotation</a></li>
 						<li><a href="#/quotations/new">Create Quotation</a></li>
 					</ul>
 				</li>
-				<li ng-class="{active: isActive('/projects')}">
+				<li ng-class="{active: isActive('/projects') || isActive('/projects/new')}">
 					<a href="#/projects">Project</a>
 					<ul>
 						<li><a href="#/projects">List Project</a></li>
-						<li><a href="#/projects">Create Project</a></li>
+						<li><a href="#/projects/new">Create Project</a></li>
 					</ul>
 				</li>
-				<li ng-class="{active: isActive('/clients')}">
+				<li ng-class="{active: isActive('/clients') || isActive('/clients/new')}">
 					<a href="#/clients">Client</a>
 					<ul>
 						<li><a href="#/clients">List Client</a></li>
-						<li><a href="#/clients">Create Client</a></li>
+						<li><a href="#/clients/new">Create Client</a></li>
 					</ul>
 				</li>
 			</ul>

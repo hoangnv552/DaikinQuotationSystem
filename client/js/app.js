@@ -5,7 +5,9 @@
 			'ngRoute',
 			'daikinControllers',
 			'daikinServices',
-			'firebase'
+			'firebase',
+			'ngDialog',
+			'daikinDirective'
 		]);
 
 	daikinApp.config(['$routeProvider', function($routeProvider) {
@@ -38,8 +40,16 @@
 				templateUrl: 'views/project.html',
 				controller: 'projectCtrl'
 			}).
+			when('/projects/new', {
+				templateUrl: 'views/project-new.html',
+				controller: 'projectCtrl'
+			}).
 			when('/clients', {
 				templateUrl: 'views/client.html',
+				controller: 'clientCtrl'
+			}).
+			when('/clients/new', {
+				templateUrl: 'views/client-new.html',
 				controller: 'clientCtrl'
 			}).
 			when('/create-quotation', {
@@ -47,7 +57,7 @@
 				controller: 'quotationCtrl'
 			}).
 			otherwise({
-				redirectTo: '/dashbroad'
+				redirectTo: '/quotations'
 			});
 	}]);
 })();

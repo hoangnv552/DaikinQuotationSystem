@@ -1,7 +1,7 @@
 ;(function() {
 	'use strict';
 
-	var quotationCtrl = function($scope, dataQuotation, Data, $routeParams, dataProject, dataClient) {
+	var quotationCtrl = function($scope, dataQuotation, Data, $routeParams, dataProject, dataClient, ngDialog) {
 
 		/*
 		* List quotation information
@@ -32,8 +32,22 @@
 			$scope.quotationsEdit = response;
 		});
 
+		/*
+		* Show dialog import
+		*/
+		$scope.importDialog = function() {
+			ngDialog.open({
+				template: 'views/popup/import.html',
+				controller: ['$scope', function($scope) {
+					$scope.title = 'aaaaaa';
+				}],
+				className: 'ngdialog-theme-plain',
+				showClose: true
+			});
+		}
+
 	}
 
-	quotationCtrl.$inject = ['$scope', 'dataQuotation', 'Data', '$routeParams', 'dataProject', 'dataClient'];
+	quotationCtrl.$inject = ['$scope', 'dataQuotation', 'Data', '$routeParams', 'dataProject', 'dataClient', 'ngDialog'];
 	angular.module('daikinControllers').controller('quotationCtrl', quotationCtrl);
 })();
