@@ -643,3 +643,6 @@ table, th, td{
 .quotation-table input{
 	text-align: right;
 }
+.project-table .client-th3{
+	width: 180px;
+}

@@ -41,12 +41,20 @@
 				templateUrl: 'views/project.html',
 				controller: 'projectCtrl'
 			}).
+			when('/projects/:id/view', {
+				templateUrl: 'views/project-view.html',
+				controller: 'projectCtrl'
+			}).
 			when('/projects/new', {
 				templateUrl: 'views/project-new.html',
 				controller: 'projectCtrl'
 			}).
 			when('/clients', {
 				templateUrl: 'views/client.html',
+				controller: 'clientCtrl'
+			}).
+			when('/clients/:id/view', {
+				templateUrl: 'views/client-view.html',
 				controller: 'clientCtrl'
 			}).
 			when('/clients/new', {

@@ -20,12 +20,12 @@
                 <th></th>
             </tr>
             <tr dir-paginate="(key, quotation) in quotations | filter: query | itemsPerPage: pageSize" current-page="currentPage">
-                <td class="td-str"><a href="">{{quotation.projectName}}</a></td>
-                <td class="td-str"><a href="#/quotations/edit/{{key}}">{{quotation.estimationName}}</a></td>
+                <td class="td-str"><a href="#/projects/{{quotation.projectName}}/view">{{quotation.projectName}}</a></td>
+                <td class="td-str"><a href="#/quotations/edit/{{quotation.key}}">{{quotation.estimationName}}</a></td>
                 <td class="td-str"><p>{{quotation.clientName}}</p></td>
                 <td class="td-num">{{quotation.revison}}</td>
                 <td class="td-num">{{quotation.createDate}}</td>
-                <td class="td-num"><a href="#/quotations/edit/{{key}}">Edit</a>&nbsp;&nbsp;&nbsp;<a href="" ng-click="viewDetailDialog(quotation)">View</a></td>
+                <td class="td-num"><a href="#/quotations/edit/{{quotation.key}}">Edit</a>&nbsp;&nbsp;&nbsp;<a href="" ng-click="viewDetailDialog(quotation)">View</a></td>
             </tr>
         </table>
     </div>

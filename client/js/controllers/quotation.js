@@ -11,9 +11,11 @@
         $rootScope.models = {};
 
         dataQuotation().$loaded().then(function(quotations) {
-        	quotations.forEach(function(quotation) {
+        	quotations.forEach(function(quotation, key) {
+        		quotation['key'] = key;
         		$scope.quotations.push(quotation);
         	});
+        	console.log($scope.quotations);
         });
 
         /*
