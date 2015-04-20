@@ -157,13 +157,22 @@ table, th, td{
 	position: relative;;
 }
 .quotation-input-right .input1{
-	margin-left: 18px;
+	margin-left: 24px;
 }
 .quotation-input-right .input2{
-	margin-left: 52px;
+	margin-left: 51px;
+}
+.quotation-input-right .input5{
+	margin-left: 70px;
 }
 .quotation-input-right .input3{
-	margin-left: 32px;
+	margin-left: 54px;
+}
+.quotation-input-right .input4{
+	margin-left: 50px;
+}
+.clientNameSelect{
+	width: 407px !important;
 }
 .quotation-model button{
 	cursor: pointer;
