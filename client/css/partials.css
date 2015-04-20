@@ -102,7 +102,7 @@ table, th, td{
 }
 .quotation-input{
 	width: 100%;
-	height: 170px;
+	height: 210px;
 }
 .quotation-model{
 	width: 100%;
@@ -126,7 +126,7 @@ table, th, td{
 	height: 100%;
 }
 .quotation-input input{
-	width: 350px;
+	width: 330px;
 	height: 30px;
 	margin-top: 15px;
 	border: 1px solid #e3e3e3;
@@ -152,6 +152,9 @@ table, th, td{
 	height: 100%;
 	float: left;
 	position: relative;
+}
+.quotation-input-left {
+	position: relative;;
 }
 .quotation-input-right .input1{
 	margin-left: 18px;
@@ -198,7 +201,12 @@ table, th, td{
 .quotation-input-right img{
 	position: absolute;
 	right: 15px;
-	bottom: 32px;
+	bottom: 76px;
+}
+.quotation-input-left img{
+	position: absolute;
+	right: 60px;
+	bottom: 82px;
 }
 /*-----------create-quotation-------------*/
 .create-quotation{
@@ -327,7 +335,6 @@ table, th, td{
 .input-project {
 	width: 385px;
   	height: 30px;
-  	padding: 0;
 }
 .save-button{
 	float: right;
@@ -642,6 +649,10 @@ table, th, td{
 }
 .quotation-table input{
 	text-align: right;
+}
+input[type="text"],
+input[type="password"] {
+	padding: 0 10px;
 }
 .project-table .client-th3{
 	width: 180px;

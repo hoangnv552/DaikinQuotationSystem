@@ -17,7 +17,9 @@
                 <th>Client name</th>
                 <th>Revision</th>
                 <th>Create date</th>
-                <th></th>
+                <th>End date</th>
+                <th>Status</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
             </tr>
             <tr dir-paginate="(key, quotation) in quotations | filter: query | itemsPerPage: pageSize" current-page="currentPage">
                 <td class="td-str"><a href="#/projects/{{quotation.projectName}}/view">{{quotation.projectName}}</a></td>
@@ -25,6 +27,8 @@
                 <td class="td-str"><p>{{quotation.clientName}}</p></td>
                 <td class="td-num">{{quotation.revison}}</td>
                 <td class="td-num">{{quotation.createDate}}</td>
+                <td class="td-num">{{quotation.endDate}}</td>
+                <td class="td-num">{{quotation.status}}</td>
                 <td class="td-num"><a href="#/quotations/edit/{{quotation.key}}">Edit</a>&nbsp;&nbsp;&nbsp;<a href="" ng-click="viewDetailDialog(quotation)">View</a></td>
             </tr>
         </table>

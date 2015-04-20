@@ -35,13 +35,12 @@
 	<div class="header-content">
 			<h3>QUOTATION HISTORY</h3>
 	</div>
-	<div class="page page-top">
-		<button class="active">1</button>
-		<button>2</button>
-		<button>3</button>
-	</div>
-	<p class="clearfix"></p>
+
 	<div class="quotation-container">
+		<div class="pagination">
+	        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="./views/pagination.tpl.html"></dir-pagination-controls>
+	    </div>
+	    <p class="clearfix"></p>
 		<table class="quotation-table">
 			<tr>
 				<td class="table-title">Project Name</td>
@@ -52,76 +51,24 @@
 				<td class="table-title">End date</td>
 				<td class="table-title">Status</td>
 			<tr>
-			<tr>
-					<td rowspan = "3"><a href="#">Nikko Building</a></td>
-					<td><a href="#">Estimation 1</a></td>
-					<td>Sagawa Crop</td>
-					<td>1.0</td>
-					<td>07-Apr-2015</td>
-					<td>27-Apr-2015</td>
-					<td>Approval</td>
-			</tr>
-			<tr>
-					<td><a href="#">Estimation 1</a></td>
-					<td>Sagawa Crop</td>
-					<td>1.0</td>
-					<td>07-Apr-2015</td>
-					<td>27-Apr-2015</td>
-					<td>Approval</td>
-			</tr>
-			<tr>
-					<td><a href="#">Estimation 1</a></td>
-					<td>Sagawa Crop</td>
-					<td>1.0</td>
-					<td>07-Apr-2015</td>
-					<td>27-Apr-2015</td>
-					<td>Approval</td>
-			</tr>
-			<tr>
-					<td rowspan = "2"><a href="#">Daiwoo Building</a></td>
-					<td><a href="#">Estimation 1</a></td>
-					<td>Sagawa Crop</td>
-					<td>1.0</td>
-					<td>07-Apr-2015</td>
-					<td>27-Apr-2015</td>
-					<td>Approval</td>
-			</tr>
-			<tr>
-					<td><a href="#">Estimation 1</a></td>
-					<td>Sagawa Crop</td>
-					<td>1.0</td>
-					<td>07-Apr-2015</td>
-					<td>27-Apr-2015</td>
-					<td>Approval</td>
-			</tr>
-			<tr>
-					<td rowspan = "2"><a href="#">Nikko Building</a></td>
-					<td><a href="#">Estimation 1</a></td>
-					<td>Sagawa Crop</td>
-					<td>1.0</td>
-					<td>07-Apr-2015</td>
-					<td>27-Apr-2015</td>
-					<td>Approval</td>
-			</tr>
-			<tr>
-					<td><a href="#">Estimation 1</a></td>
-					<td>Sagawa Crop</td>
-					<td>1.0</td>
-					<td>07-Apr-2015</td>
-					<td>27-Apr-2015</td>
-					<td>Approval</td>
+			<tr dir-paginate="quotation in quotations | itemsPerPage: pageSize" current-page="currentPage">
+				<td><a href="#">{{quotation.projectName}}</a></td>
+				<td><a href="">{{quotation.estimationName}}</a></td>
+				<td><p>{{quotation.clientName}}</p></td>
+				<td>{{quotation.revison}}</td>
+				<td>{{quotation.createDate}}</td>
+				<td>{{quotation.endDate}}</td>
+				<td>{{quotation.status}}</td>
 			</tr>
 		</table>
 		<div class = "button-group clearfix">
 			<div class="buttons-left">
-				<button>New Project</button>
-				<button>New Quotation</button>
+				<a href="#/projects/new"><button>New Project</button></a>
+				<a href="#/quotations/new"><button>New Quotation</button></a>
 			</div>
-			<div class="page">
-				<button class="active">1</button>
-				<button>2</button>
-				<button>3</button>
-			</div>
+			<div class="pagination">
+		        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="./views/pagination.tpl.html"></dir-pagination-controls>
+		    </div>
 		</div>
 	</div>
 
