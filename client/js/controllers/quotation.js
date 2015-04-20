@@ -7,10 +7,14 @@
         * List quotation information
         */
         $scope.currentPage = 1;
-        $scope.pageSize = 10;
-        $scope.quotations = dataQuotation();
+        $scope.quotations = [];
         $rootScope.models = {};
 
+        dataQuotation().$loaded().then(function(quotations) {
+        	quotations.forEach(function(quotation) {
+        		$scope.quotations.push(quotation);
+        	});
+        });
 
         /*
         * View quotation

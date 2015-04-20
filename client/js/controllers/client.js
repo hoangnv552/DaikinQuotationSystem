@@ -3,11 +3,14 @@
 
 	var clientCtrl = function($scope, dataClient, Data, addClient, $location) {
 		$scope.currentPage = 1;
-		$scope.pageSize = 10;
-		$scope.clients = dataClient;
-		// Data.client().$promise.then(function done(response) {
-		// 	$scope.clients = response;
-		// });
+		$scope.clients = [];
+
+		dataClient.$loaded().then(function(clients) {
+			clients.forEach(function(client) {
+				$scope.clients.push(client);
+			});
+		});
+
 		$scope.addClient = function() {
 			console.log($scope.client);
 			addClient($scope.client);

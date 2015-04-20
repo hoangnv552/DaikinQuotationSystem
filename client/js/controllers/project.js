@@ -3,17 +3,15 @@
 
 	var projectCtrl = function($scope, dataProject, Data, addProject, $location, dataClient) {
 		$scope.currentPage = 1;
-		$scope.pageSize = 10;
+		$scope.projects = [];
 
 		if (dataProject) {
-			$scope.projects = dataProject;
+			dataProject.$loaded().then(function(projects) {
+				projects.forEach(function(project) {
+					$scope.projects.push(project);
+				});
+			});
 		}
-
-		$scope.clients = dataClient;
-		// Data.project().$promise.then(function done(response) {
-		// 	$scope.projects = response;
-		// 	console.log(response);
-		// });
 
 		$scope.addProject = function() {
 			console.log($scope.project);
