@@ -1,105 +1,105 @@
 <div class="project">
-	<div class="projectInfo">
-		<h3>Edit quotation information</h3>
-	</div>
-	<div class="quotation-input">
-		<div class="quotation-input-left">
-			<label>Project name:</label>
-			<!-- <input ng-model="quotation.projectName" class="input1" > -->
-			<select ng-model="quotation.projectName" class="input1">
-				<option ng-repeat="name in projectName" value="{{name.projectName}}">{{name.projectName}}</option>
-  			</select>
-			<br>
-			<label>Client name:</label>
-			<!-- <input ng-model="quotation.clientName"class="input2"> -->
-			<select ng-model="quotation.clientName" class="input2">
-				<option ng-repeat="name in clientName" value="{{name.clientName}}">{{name.clientName}}</option>
-  			</select>
-			<br>
-			<label>Reference:</label>
-			<input ng-model="quotation.reference"  class="input3">
-		</div>
-		<div class="quotation-input-right">
-			<label>Quotation No:</label>
-			<input ng-model="quotation.estimationName" class="input1">
-			<br>
-			<label>Revison:</label>
-			<input ng-model="quotation.revison" class="input2">
-			<br>
-			<label>Create date:</label>
-			<input ng-model="quotation.createDate" class="input3">
-			<img src="./img/date-icon.png">
-		</div>
-	</div>
-	<div class="save-button-quotation">
-		<button ng-click="saveQuotation(quotation)" class="save">Save</button>
-	</div>
-	<div class="quotation-model">
-		<button ng-click="importDialog()">VRV Epress</button>
-		<button ng-click="importDialog()">Select Models</button>
-		<button class="viewpdf" ng-click="viewDetailDialog(quotation)">View PDF</button>
-	</div>
-	<div class="project-table quotation-table">
-		<table ng-table="tableParams" class="table">
-			<tr>
-				<th class="quotation-th1">No.</th>
-				<th class="quotation-th2">Model</th>
-				<th class="quotation-th3">Description</th>
-				<th class="quotation-th4">Qty</th>
-				<th class="quotation-th5">List price</th>
-				<th class="quotation-th6">Price</th>
-				<th class="quotation-th7">Amount</th>
-				<th></th>
-			</tr>
-			<tbody ng-if="isView">
-				<tr ng-repeat="(key, item) in quotation.models">
-					<td class="td-num">{{$index + 1}}</td>
-					<td class="td-str">
-						<span ng-hide="editMode"><p>{{item.model}}</p></span>
-						<input type="text" ng-show="editMode" ng-model="item.model" ng-required />
-					</td>
-					<td class="td-str"><p>{{item.description}}</p></td>
-					<td class="td-num">
-						<input type="text" class="qty" ng-model="item.qty">
-					</td>
-					<td class="td-num">{{item.listPrice}}</td>
-					<td class="td-num">
-						<input type="text" class="price" ng-model="item.price">
-					</td>
-					<td class="td-num">{{amount(item)}}</td>
-					<td class="td-num"><a href="" ng-click="removeQoute(key)">Delete</a></td>
-				</tr>
-			</tbody>
-			<tbody ng-if="!isView">
-				<tr ng-repeat="(key, item) in models">
-					<td class="td-num">{{$index + 1}}</td>
-					<td class="td-str">
-						<span ng-hide="editMode"><p>{{item.model}}</p></span>
-						<input type="text" ng-show="editMode" ng-model="item.model" ng-required />
-					</td>
-					<td class="td-str"><p>{{item.description}}</p></td>
-					<td class="td-num">
-						<input type="text" class="qty" ng-model="item.qty">
-					</td>
-					<td class="td-num">{{item.listPrice}}</td>
-					<td class="td-num">
-						<input type="text" class="price" ng-model="item.price">
-					</td>
-					<td class="td-num">{{amount(item)}}</td>
-					<td class="td-num"><a href="" ng-click="removeQouteAdd(models, key)">Delete</a></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="quotation-total">
-		<label><p>Subtotal</p></label><div class="total-number"><p>{{totalAmount()}}</p></div>
-		<label><p>Tax</p></label><div class="total-number"><p><input ng-model="tax"></p></div>
-		<label><p>Total</p></label><div class="total-number"><p>{{totalAmount() - tax}}</p></div>
-	</div>
-	<div class="button">
-		<button ng-click="importDialog()"><a href="">Add<a></button>
-	</div>
-	<div class="quotation-memo">
-		<textarea rows="4" name="comment" ng-model="quotation.memo" form="usrform"></textarea>
-	</div>
+    <div class="projectInfo">
+        <h3>Edit quotation information</h3>
+    </div>
+    <div class="quotation-input">
+        <div class="quotation-input-left">
+            <label>Project name:</label>
+            <!-- <input ng-model="quotation.projectName" class="input1" > -->
+            <select ng-model="quotation.projectName" class="input1">
+                <option ng-repeat="name in projectName" value="{{name.projectName}}">{{name.projectName}}</option>
+            </select>
+            <br>
+            <label>Client name:</label>
+            <!-- <input ng-model="quotation.clientName"class="input2"> -->
+            <select ng-model="quotation.clientName" class="input2">
+                <option ng-repeat="name in clientName" value="{{name.clientName}}">{{name.clientName}}</option>
+            </select>
+            <br>
+            <label>Reference:</label>
+            <input ng-model="quotation.reference"  class="input3">
+        </div>
+        <div class="quotation-input-right">
+            <label>Quotation No:</label>
+            <input ng-model="quotation.estimationName" class="input1">
+            <br>
+            <label>Revison:</label>
+            <input ng-model="quotation.revison" class="input2">
+            <br>
+            <label>Create date:</label>
+            <input ng-model="quotation.createDate" class="input3">
+            <img src="./img/date-icon.png">
+        </div>
+    </div>
+    <div class="save-button-quotation">
+        <button ng-click="saveQuotation(quotation)" class="save">Save</button>
+    </div>
+    <div class="quotation-model">
+        <button ng-click="importDialog(0)">VRV Epress</button>
+        <button ng-click="importDialog(1)">Select Models</button>
+        <button class="viewpdf" ng-click="viewDetailDialog(quotation)">View PDF</button>
+    </div>
+    <div class="project-table quotation-table">
+        <table ng-table="tableParams" class="table">
+            <tr>
+                <th class="quotation-th1">No.</th>
+                <th class="quotation-th2">Model</th>
+                <th class="quotation-th3">Description</th>
+                <th class="quotation-th4">Qty</th>
+                <th class="quotation-th5">List price</th>
+                <th class="quotation-th6">Price</th>
+                <th class="quotation-th7">Amount</th>
+                <th></th>
+            </tr>
+            <tbody ng-if="isView">
+                <tr ng-repeat="(key, item) in quotation.models">
+                    <td class="td-num">{{$index + 1}}</td>
+                    <td class="td-str">
+                        <span ng-hide="editMode"><p>{{item.model}}</p></span>
+                        <input type="text" ng-show="editMode" ng-model="item.model" ng-required />
+                    </td>
+                    <td class="td-str"><p>{{item.description}}</p></td>
+                    <td class="td-num">
+                        <input type="text" class="qty" ng-model="item.qty">
+                    </td>
+                    <td class="td-num">{{item.listPrice}}</td>
+                    <td class="td-num">
+                        <input type="text" class="price" ng-model="item.price">
+                    </td>
+                    <td class="td-num">{{amount(item)}}</td>
+                    <td class="td-num"><a href="" ng-click="removeQoute(key)">Delete</a></td>
+                </tr>
+            </tbody>
+            <tbody ng-if="!isView">
+                <tr ng-repeat="(key, item) in models">
+                    <td class="td-num">{{$index + 1}}</td>
+                    <td class="td-str">
+                        <span ng-hide="editMode"><p>{{item.model}}</p></span>
+                        <input type="text" ng-show="editMode" ng-model="item.model" ng-required />
+                    </td>
+                    <td class="td-str"><p>{{item.description}}</p></td>
+                    <td class="td-num">
+                        <input type="text" class="qty" ng-model="item.qty">
+                    </td>
+                    <td class="td-num">{{item.listPrice}}</td>
+                    <td class="td-num">
+                        <input type="text" class="price" ng-model="item.price">
+                    </td>
+                    <td class="td-num">{{amount(item)}}</td>
+                    <td class="td-num"><a href="" ng-click="removeQouteAdd(models, key)">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="quotation-total">
+        <label><p>Subtotal</p></label><div class="total-number"><p>{{totalAmount()}}</p></div>
+        <label><p>Tax</p></label><div class="total-number"><p><input ng-model="tax"></p></div>
+        <label><p>Total</p></label><div class="total-number"><p>{{totalAmount() - tax}}</p></div>
+    </div>
+    <div class="button">
+        <button ng-click="importDialog(1)"><a href="">Add<a></button>
+    </div>
+    <div class="quotation-memo">
+        <textarea rows="4" name="comment" ng-model="quotation.memo" form="usrform"></textarea>
+    </div>
 </div>

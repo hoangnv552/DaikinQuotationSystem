@@ -1,159 +1,191 @@
 ;(function() {
-	'use strict';
+    'use strict';
 
-	var quotationCtrl = function($scope, dataQuotation, Data, $routeParams, dataProject, dataClient, ngDialog, $route, dataModels, deleteModel, addQuotation, $rootScope, $location) {
+    var quotationCtrl = function($scope, dataQuotation, Data, $routeParams, dataProject, dataClient, ngDialog, $route, dataModels, deleteModel, addQuotation, $rootScope, $location) {
 
-		/*
-		* List quotation information
-		*/
-		$scope.currentPage = 1;
-		$scope.pageSize = 10;
-		$scope.quotations = dataQuotation();
-		$rootScope.models = {};
+        /*
+        * List quotation information
+        */
+        $scope.currentPage = 1;
+        $scope.pageSize = 10;
+        $scope.quotations = dataQuotation();
+        $rootScope.models = {};
 
 
-		/*
-		* View quotation
-		*/
-		var id = $routeParams.id;
-		if (id) {
-			$scope.quotation = dataQuotation(id);
-			$scope.isView = true;
+        /*
+        * View quotation
+        */
+        var id = $routeParams.id;
+        if (id) {
+            $scope.quotation = dataQuotation(id);
+            $scope.isView = true;
 
-		} else {
-			$scope.isView = false;
-			$scope.saveQuotation = function(quotation) {
-				var quotation;
-				var i;
-				for (i = 0; i < $rootScope.models.length; i++) {
+        } else {
+            $scope.isView = false;
+            $scope.saveQuotation = function(quotation) {
+                var quotation;
+                var i;
+                for (i = 0; i < $rootScope.models.length; i++) {
 
-					quotation = angular.extend({
-						models: $rootScope.models
-					}, $scope.quotation);
+                    quotation = angular.extend({
+                        models: $rootScope.models
+                    }, $scope.quotation);
 
-				}
+                }
 
-				console.log(quotation);
+                console.log(quotation);
 
-				// var quotationsItem =
+                // var quotationsItem =
 
-				addQuotation(quotation).then(function(response) {
-					console.log(response.path.o[1]);
+                addQuotation(quotation).then(function(response) {
+                    console.log(response.path.o[1]);
 
-					$location.path('/quotations');
-				});
-			}
-		}
+                    $location.path('/quotations');
+                });
+            }
+        }
 
-		$scope.amount = function(model) {
-			var totalTemp = 0;
-			if (model) {
-				totalTemp = model.qty * model.price;
-			}
+        var totalModelPrice = function(models) {
+            var total = 0;
+            angular.forEach(models, function(model) {
+                total += $scope.amount(model);
+            });
 
-			return totalTemp;
-		};
+            return total;
+        };
 
-		$scope.totalAmount = function() {
-			var total = 0;
+        $scope.amount = function(model) {
+            var totalTemp = 0;
+            if (model) {
+                totalTemp = model.qty * model.price;
+            }
 
-			if ($scope.quotation) {
-				angular.forEach($scope.quotation.models, function(model) {
-					total += $scope.amount(model);
-				});
-			}
-			return total;
-		};
+            return totalTemp;
+        };
 
-		// Remove model
-		$scope.removeQoute = function(model) {
-			console.log(model);
-			var deletea = deleteModel(id, model);
-			console.log(deletea);
-		};
+        $scope.totalAmount = function() {
+            if ($scope.quotation && $scope.quotation.models) {
+                return totalModelPrice($scope.quotation.models);
+            } else {
+                return totalModelPrice($rootScope.models);
+            }
+        };
 
-		// Remove model add
-		$scope.removeQouteAdd = function(models, key) {
-			console.log(key);
-			$rootScope.models.splice(key, 1);
-		}
+        // Remove model
+        $scope.removeQoute = function(model) {
+            console.log(model);
+            var deletea = deleteModel(id, model);
+            console.log(deletea);
+        };
 
-		// Get project name
-		$scope.projectName = dataProject;
+        // Remove model add
+        $scope.removeQouteAdd = function(models, key) {
+            console.log(key);
+            $rootScope.models.splice(key, 1);
+        }
 
-		// Get client name
-		$scope.clientName = dataClient;
+        // Get project name
+        $scope.projectName = dataProject;
 
-		/*
-		* Edit quotation
-		*/
-		Data.quotation().$promise.then(function done(response) {
-			$scope.quotationsEdit = response;
-		});
+        // Get client name
+        $scope.clientName = dataClient;
 
-		/*
-		* Show dialog import
-		*/
-		$scope.importDialog = function() {
-			ngDialog.open({
-				template: 'views/popup/import.html',
-				controller: ['$scope', 'dataModels', 'dataQuotation', 'addModel', '$rootScope', function($scope, dataModels, dataQuotation, addModel, $rootScope) {
-					$scope.models = dataModels();
+        /*
+        * Edit quotation
+        */
+        Data.quotation().$promise.then(function done(response) {
+            $scope.quotationsEdit = response;
+        });
 
-					$scope.selectedIds = {};
-					$scope.modelId = [];
+        /*
+        * Show dialog import
+        */
+        $scope.importDialog = function(tabId) {
+            ngDialog.open({
+                template: 'views/popup/import.html',
+                controller: ['$scope', 'dataModels', 'dataQuotation', 'addModel', '$rootScope', function($scope, dataModels, dataQuotation, addModel, $rootScope) {
+                    $scope.models = dataModels();
 
-					// Add models
-					$scope.selectModelId = function() {
-						var keys = Object.keys($scope.selectedIds);
-						var index;
-						var model;
-						var models = [];
+                    $scope.selectedIds = {};
+                    $scope.modelId = [];
 
-						for (var i = 0; i < keys.length; i++) {
-							index = keys[i];
-							if ($scope.selectedIds[index]) {
+                    $scope.selectedTab = tabId;
 
-								if (id) {
-									model = angular.extend({
-										addAt: Date.now()
-									}, $scope.models[index]);
+                    /*
+                    * Check if a model is exist in a model list or not
+                    */
+                    var modelExist = function(models, model) {
+                        var ret = false;
+                        angular.forEach(models, function(aModel) {
+                            if (aModel.$id == model.$id) {
+                                ret = true
+                                return;
+                            }
+                        });
 
-									console.log(model);
+                        return ret;
+                    };
 
-									addModel(id).$add(model);
-								} else {
-									models = models.concat($scope.models[index]);
-								}
-							}
-						}
-						// $scope.models = models;
-						$rootScope.models = models;
-						console.log($rootScope.models);
-						$scope.closeThisDialog();
-					}
-				}],
-				className: 'ngdialog-theme-plain',
-				showClose: true
-			});
-		}
+                    // Add models
+                    $scope.selectModelId = function() {
+                        var keys = Object.keys($scope.selectedIds);
+                        var index;
+                        var model;
+                        var models = [];
 
-		/*
-		* View detail
-		*/
-		$scope.viewDetailDialog = function(quotation) {
-			ngDialog.open({
-				template: 'views/popup/detail.html',
-				controller: ['$scope', function($scope) {
-					$scope.qoutationView = quotation;
-					console.log($scope.qoute);
-				}],
-				className: 'ngdialog-theme-dialog',
-				showClose: false
-			});
-		}
-	}
+                        for (var i = 0; i < keys.length; i++) {
+                            index = keys[i];
+                            if ($scope.selectedIds[index]) {
 
-	quotationCtrl.$inject = ['$scope', 'dataQuotation', 'Data', '$routeParams', 'dataProject', 'dataClient', 'ngDialog', '$route', 'dataModels', 'deleteModel', 'addQuotation', '$rootScope', '$location'];
-	angular.module('daikinControllers').controller('quotationCtrl', quotationCtrl);
+                                if (id) {
+                                    model = angular.extend({
+                                        addAt: Date.now()
+                                    }, $scope.models[index]);
+
+                                    console.log(model);
+
+                                    addModel(id).$add(model);
+                                } else {
+                                    models = models.concat($scope.models[index]);
+                                }
+                            }
+                        }
+
+                        if ($rootScope.models.length) {
+                            // Add only newly added models
+                            angular.forEach(models, function(model) {
+                                if (!modelExist($rootScope.models, model)) {
+                                    $rootScope.models.push(model);
+                                }
+                            });
+                        } else {
+                            $rootScope.models = models;
+                        }
+
+                        $scope.closeThisDialog();
+                    }
+                }],
+                className: 'ngdialog-theme-plain',
+                showClose: true
+            });
+        }
+
+        /*
+        * View detail
+        */
+        $scope.viewDetailDialog = function(quotation) {
+            ngDialog.open({
+                template: 'views/popup/detail.html',
+                controller: ['$scope', function($scope) {
+                    $scope.qoutationView = quotation;
+                    console.log($scope.qoute);
+                }],
+                className: 'ngdialog-theme-dialog',
+                showClose: false
+            });
+        }
+    }
+
+    quotationCtrl.$inject = ['$scope', 'dataQuotation', 'Data', '$routeParams', 'dataProject', 'dataClient', 'ngDialog', '$route', 'dataModels', 'deleteModel', 'addQuotation', '$rootScope', '$location'];
+    angular.module('daikinControllers').controller('quotationCtrl', quotationCtrl);
 })();
