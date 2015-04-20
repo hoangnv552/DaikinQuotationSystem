@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="css/app.css">
 	<link rel="stylesheet" href="css/partials.css">
 	<link rel="stylesheet" href="css/popup.css">
+	<link rel="stylesheet" href="css/dialog.css">
 	<link rel="stylesheet" href="vendors/ngDialog/css/ngDialog.css">
 	<link rel="stylesheet" href="vendors/ngDialog/css/ngDialog-theme-default.css">
 	<link rel="stylesheet" href="css/colorbox.css">
@@ -25,6 +26,7 @@
 	<script src="js/app.js"></script>
 
 	<script src="js/services/data.js"></script>
+	<script src="js/services/session.js"></script>
 
 	<script src="js/controllers/controller.js"></script>
 	<script src="js/controllers/login.js"></script>
@@ -36,53 +38,56 @@
 
 	<script src="js/directives/tabs.js"></script>
 </head>
-<body>
-
-<div class="contents">
-	<div class="header">
-		<div class="banner">
-			<img src="./img/logo.png" alt="">
-			<h2>Daikin Quatation Sytems</h2>
-			<div class="login">
-				<span class="icon-login"><img src="./img/icon-login.png"></span>
-				<a href="#/login">Logout</a>
-				<span class="icon-comma"><img src="./img/comma.png"></span>
+<body ng-controller="menuController">
+	<div ng-show="isLoggedIn()">
+		<div class="contents">
+			<div class="header">
+				<div class="banner">
+					<img src="./img/logo.png" alt="">
+					<h2>Daikin Quatation Sytems{{login}}</h2>
+					<div class="login">
+						<span class="icon-login"><img src="./img/icon-login.png"></span>
+						<a href="#/login">Logout</a>
+						<span class="icon-comma"><img src="./img/comma.png"></span>
+					</div>
+				</div>
+				<div class="menu">
+					<ul>
+						<li ng-class="{active: isActive('/dashbroad')}"><a href="#/dashbroad">Dashbroad</a></li>
+						<li ng-class="{active: isActive('/quotations') || isActive('/create-quotation')}">
+							<a href="#/quotations">Quotation</a>
+							<ul>
+								<li><a href="#/quotations">List Quotation</a></li>
+								<li><a href="#/quotations/new">Create Quotation</a></li>
+							</ul>
+						</li>
+						<li ng-class="{active: isActive('/projects') || isActive('/projects/new')}">
+							<a href="#/projects">Project</a>
+							<ul>
+								<li><a href="#/projects">List Project</a></li>
+								<li><a href="#/projects/new">Create Project</a></li>
+							</ul>
+						</li>
+						<li ng-class="{active: isActive('/clients') || isActive('/clients/new')}">
+							<a href="#/clients">Client</a>
+							<ul>
+								<li><a href="#/clients">List Client</a></li>
+								<li><a href="#/clients/new">Create Client</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="container">
+				<div ng-view class="view-frame"></div>
+			</div>
+			<div class="footer">
+				<h2>DAIKIN QUATATION SYSTEM, 2015</h2>
 			</div>
 		</div>
-		<div class="menu" ng-controller="menuController">
-			<ul>
-				<li ng-class="{active: isActive('/dashbroad')}"><a href="#/dashbroad">Dashbroad</a></li>
-				<li ng-class="{active: isActive('/quotations') || isActive('/create-quotation')}">
-					<a href="#/quotations">Quotation</a>
-					<ul>
-						<li><a href="#/quotations">List Quotation</a></li>
-						<li><a href="#/quotations/new">Create Quotation</a></li>
-					</ul>
-				</li>
-				<li ng-class="{active: isActive('/projects') || isActive('/projects/new')}">
-					<a href="#/projects">Project</a>
-					<ul>
-						<li><a href="#/projects">List Project</a></li>
-						<li><a href="#/projects/new">Create Project</a></li>
-					</ul>
-				</li>
-				<li ng-class="{active: isActive('/clients') || isActive('/clients/new')}">
-					<a href="#/clients">Client</a>
-					<ul>
-						<li><a href="#/clients">List Client</a></li>
-						<li><a href="#/clients/new">Create Client</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
 	</div>
-	<div class="container">
+	<div ng-hide="isLoggedIn()">
 		<div ng-view class="view-frame"></div>
 	</div>
-	<div class="footer">
-		<h2>DAIKIN QUATATION SYSTEM, 2015</h2>
-	</div>
-</div>
-
 </body>
 </html>

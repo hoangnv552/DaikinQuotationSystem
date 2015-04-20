@@ -33,36 +33,16 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td class="td-num"><input type="checkbox"></td>
-									<td class="td-str"><p>RXQ6TTL</p></td>
-									<td class="td-str"><p>VRV4</p></td>
-								</tr>
-								<tr>
-									<td class="td-num"><input type="checkbox"></td>
-									<td class="td-str"><p>RXQ6TTLE</p></td>
-									<td class="td-str"><p>VRV4</p></td>
-								</tr>
-								<tr>
-									<td class="td-num"><input type="checkbox"></td>
-									<td class="td-str"><p>RXQ6TY1</p></td>
-									<td class="td-str"><p>VRV4</p></td>
-								</tr>
-								<tr>
-									<td class="td-num"><input type="checkbox"></td>
-									<td class="td-str"><p>RXQ6TY14</p></td>
-									<td class="td-str"><p>VRV4</p></td>
-								</tr>
-								<tr>
-									<td class="td-num"><input type="checkbox"></td>
-									<td class="td-str"><p>RXQ6TY14E</p></td>
-									<td class="td-str"><p>VRV4</p></td>
+								<tr ng-repeat="model in models track by $index">
+									<td class="td-num"><input ng-model="selectedIds[$index]" type="checkbox"></td>
+									<td class="td-str"><p>{{model.model}}</p></td>
+									<td class="td-str"><p>{{model.unit}}</p></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 					<div class="import-button">
-						<button>Add</button>
+						<button ng-click="selectModelId()">Add</button>
 					</div>
 				</div>
 			</daikin-pane>
@@ -82,42 +62,7 @@
 						<button>Search</button>
 					</div>
 					<div class="import-table">
-						<table ng-table="tableParams" class="table">
-							<thead>
-								<tr>
-									<th class="th-with-import">Check</th>
-									<th>Model name</th>
-									<th>Unit type</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="td-num"><input type="checkbox"></td>
-									<td class="td-str"><p>FXFQ50PVE</p></td>
-									<td class="td-str"><p>Ceilling Mounted</p></td>
-								</tr>
-								<tr>
-									<td class="td-num"><input type="checkbox"></td>
-									<td class="td-str"><p>FXFQ50PVE4</p></td>
-									<td class="td-str"><p>Ceilling Mounted</p></td>
-								</tr>
-								<tr>
-									<td class="td-num"><input type="checkbox"></td>
-									<td class="td-str"><p>FXFQ50PVED</p></td>
-									<td class="td-str"><p>Ceilling Mounted</p></td>
-								</tr>
-								<tr>
-									<td class="td-num"><input type="checkbox"></td>
-									<td class="td-str"><p>FXFQ50PVET</p></td>
-									<td class="td-str"><p>VRV4</p></td>
-								</tr>
-								<tr>
-									<td class="td-num"><input type="checkbox"></td>
-									<td class="td-str"><p>FXFQ50PVEM</p></td>
-									<td class="td-str"><p>Ceilling Mounted</p></td>
-								</tr>
-							</tbody>
-						</table>
+
 					</div>
 					<div class="import-button">
 						<button>Add</button>

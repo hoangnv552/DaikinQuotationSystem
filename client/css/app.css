@@ -126,8 +126,7 @@ body{
 .button button{
 	background: #0083d1;
 	border: none;
-	width: 110px;
-	height: 40px;
+	padding: 8px 12px;
 	margin-bottom: 20px;
 	cursor: pointer;
 }

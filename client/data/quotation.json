@@ -1,88 +1,38 @@
 [
 	{
-		"projectName": "Nikko Building",
-		"estimationName": "Sagawa Crop",
-		"clientName": "Estimation",
-		"revison": "1.0",
-		"createDate": "07-Apr-2015",
-		"endDate": "07-Apr-2015",
-		"status": "Approval",
-		"models": [
-			{
-				"model": "RXYQ34PY1",
-				"description": "HEAT pump VRV III PR41",
-				"qty": 1,
-				"listPrice": 1000,
-				"price": 500,
-				"subTotal": 500
-			},
-			{
-				"model": "RXYQ43PY2",
-				"description": "HEAT pump VRV III PR32",
-				"qty": 1,
-				"listPrice": 1000,
-				"price": 500,
-				"subTotal": 500
-			},
-			{
-				"model": "RXYQ34PY3",
-				"description": "HEAT pump VRV III PR54",
-				"qty": 1,
-				"listPrice": 1000,
-				"price": 500,
-				"subTotal": 500
-			},
-			{
-				"model": "RXYQ34PY4",
-				"description": "HEAT pump VRV III PR42",
-				"qty": 2,
-				"listPrice": 3000,
-				"price": 600,
-				"subTotal": 600
-			}
-		]
+		"model": "RXYQ34PY1",
+		"description": "HEAT pump VRV III PR41",
+		"qty": 1,
+		"listPrice": 1000,
+		"price": 500,
+		"subTotal": 500,
+		"unit": "VRV4"
 	},
 	{
-		"projectName": "Honda Building",
-		"estimationName": "Konami Crop",
-		"clientName": "Estimation Konami",
-		"revison": "2.0",
-		"createDate": "07-Apr-2015",
-		"endDate": "07-Apr-2015",
-		"status": "Approval",
-		"models": [
-			{
-				"model": "RXYQ34PY1",
-				"description": "HEAT pump VRV III PR41",
-				"qty": 1,
-				"listPrice": 1000,
-				"price": 500,
-				"subTotal": 500
-			},
-			{
-				"model": "RXYQ43PY2",
-				"description": "HEAT pump VRV III PR32",
-				"qty": 1,
-				"listPrice": 1000,
-				"price": 500,
-				"subTotal": 500
-			},
-			{
-				"model": "RXYQ34PY3",
-				"description": "HEAT pump VRV III PR54",
-				"qty": 1,
-				"listPrice": 1000,
-				"price": 500,
-				"subTotal": 500
-			},
-			{
-				"model": "RXYQ34PY4",
-				"description": "HEAT pump VRV III PR42",
-				"qty": 2,
-				"listPrice": 3000,
-				"price": 600,
-				"subTotal": 600
-			}
-		]
+		"model": "RXYQ43PY2",
+		"description": "HEAT pump VRV III PR32",
+		"qty": 1,
+		"listPrice": 1000,
+		"price": 500,
+		"subTotal": 500,
+		"unit": "VRV4"
+	},
+	{
+		"model": "RXYQ34PY3",
+		"description": "HEAT pump VRV III PR54",
+		"qty": 1,
+		"listPrice": 1000,
+		"price": 500,
+		"subTotal": 500,
+		"unit": "VRV4"
+	},
+	{
+		"model": "RXYQ34PY4",
+		"description": "HEAT pump VRV III PR42",
+		"qty": 2,
+		"listPrice": 3000,
+		"price": 600,
+		"subTotal": 600,
+		"unit": "VRV4"
 	}
 ]

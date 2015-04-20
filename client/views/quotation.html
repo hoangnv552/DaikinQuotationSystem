@@ -1,6 +1,6 @@
 <div class="project">
 	<div class="projectInfo">
-		<h3>QUOTATION INFORMATION</h3>
+		<h3>Quotation information</h3>
 	</div>
 	<div class="project-search">
 		<input type="text" placeholder="Search quotation name" ng-model="query">
@@ -12,20 +12,20 @@
 	<div class="project-table">
 		<table ng-table="tableParams" class="table">
 			<tr>
-				<th class="th-width">Project Name</th>
-				<th>Estimation Name</th>
-				<th>Client Name</th>
+				<th class="th-width">Project name</th>
+				<th>Quotation title</th>
+				<th>Client name</th>
 				<th>Revision</th>
 				<th>Create date</th>
 				<th></th>
 			</tr>
-			<tr dir-paginate="quotation in quotations | filter: query | itemsPerPage: pageSize" current-page="currentPage">
+			<tr dir-paginate="(key, quotation) in quotations | filter: query | itemsPerPage: pageSize" current-page="currentPage">
 				<td class="td-str"><a href="">{{quotation.projectName}}</a></td>
 				<td class="td-str"><a href="">{{quotation.estimationName}}</a></td>
 				<td class="td-str"><p>{{quotation.clientName}}</p></td>
 				<td class="td-num">{{quotation.revison}}</td>
 				<td class="td-num">{{quotation.createDate}}</td>
-				<td class="td-num"><a href="#/quotations/edit/{{$index}}">Edit</a>&nbsp;&nbsp;&nbsp;<a href="">View</a></td>
+				<td class="td-num"><a href="#/quotations/edit/{{key}}">Edit</a>&nbsp;&nbsp;&nbsp;<a href="" ng-click="viewDetailDialog(quotation)">View</a></td>
 			</tr>
 		</table>
 	</div>
@@ -33,6 +33,6 @@
 		<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="./views/pagination.tpl.html"></dir-pagination-controls>
 	</div>
 	<div class="button">
-		<button><a href="#">New Quotation<a></button>
+		<button><a href="#/quotations/new">New Quotation<a></button>
 	</div>
 </div>

@@ -1,1 +1,29 @@
-{{demo}}
+<div class="container-login">
+	<div class="title-content">
+		<div class="logo-login"><img src="./img/logo_login.png"></div>
+		<h2>Daikin Quatation System</h2>
+	</div>
+
+	<div class="login-form clearfix">
+		<div class="user-name">
+			<label>Username</label><br>
+			<input ng-model="user.name" class="input-text"></input>
+			<label class="error">{{errorName}}</label>
+		</div>
+		<div class = "password">
+			<label>Password</label><br>
+			<input type="password" ng-model="user.password" class="input-text"></input>
+			<label class="error">{{errorPass}}</label>
+		</div>
+		<div>
+			<input type="checkbox">
+			<span>Remember me</span>
+			<button ng-click="login(); login=false">Login</button>
+		</div>
+		<div class="forgot-pass">
+			<a href="#">Forgot password ?</a>
+		</div>
+
+
+	</div>
+</div>

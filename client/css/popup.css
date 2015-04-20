@@ -1,7 +1,7 @@
 #daikinModal{
 	width: 800px;
 	width: 104%;
-  	height: 630px;
+  	height: 570px;
   	margin-left: -15px;
   	margin-top: -36px;
 }
@@ -103,7 +103,7 @@
 /*--------------Import table--------------*/
 .import-table{
 	width: 100%;
-	height: 390px;
+	height: 330px;
 	float: left;
 	margin-top: 20px;
 }
@@ -124,12 +124,9 @@
 .th-with-import{
 	width: 100px;
 }
-/*.import-table .table tbody{
+/*.import-table table tbody{
 	display: block;
 }
-.import-table .table tbody {
+.import-table table tbody {
     height: 100px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-*/
+}*/

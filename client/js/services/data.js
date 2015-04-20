@@ -50,7 +50,7 @@
 	}]);
 
 	// Data quotation
-	angular.module('daikinServices').factory('dataQuotation', ['$firebaseObject', function($firebaseObject) {
+	angular.module('daikinServices').factory('dataQuotation', ['$firebaseObject', function($firebaseArray) {
 		return function(id) {
 			var url;
 			if (id) {
@@ -61,7 +61,63 @@
 
 			var ref = new Firebase(url);
 
-			return $firebaseObject(ref);
+			return $firebaseArray(ref);
 		}
 	}]);
+
+	// Data models
+	angular.module('daikinServices').factory('dataModels', ['$firebaseArray', function($firebaseArray) {
+		return function(id) {
+			var url;
+			if (id) {
+				url = urlTmp + 'models/' + id;
+			} else {
+				url = urlTmp + 'models/';
+			}
+
+			var ref = new Firebase(url);
+
+			return $firebaseArray(ref);
+		}
+	}]);
+	// Data client
+	angular.module('daikinServices').factory('addModel', ['$firebaseArray', function($firebaseArray) {
+		return function(id) {
+			var url;
+			if (id) {
+				url = urlTmp + 'quotation/' + id + '/models/';
+			}
+
+			var ref = new Firebase(url);
+
+			return $firebaseArray(ref);
+		}
+	}]);
+
+	// delete model
+	angular.module('daikinServices').factory('deleteModel', ['$firebaseObject', function($firebaseObject) {
+		return function(id, model) {
+			var url;
+			if (id) {
+				url = urlTmp + 'quotation/' + id + '/models/' + model;
+			}
+
+			var ref = new Firebase(url);
+
+
+			return $firebaseObject(ref).$remove();
+		}
+	}]);
+
+	// add quotation
+	angular.module('daikinServices').factory('addQuotation', ['$firebaseArray', function($firebaseArray) {
+		return function(quotation) {
+
+			var url = urlTmp + 'quotation/';
+			var ref = new Firebase(url);
+
+			return $firebaseArray(ref).$add(quotation);
+		}
+	}]);
+
 })();

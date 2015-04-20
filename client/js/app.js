@@ -7,7 +7,8 @@
 			'daikinServices',
 			'firebase',
 			'ngDialog',
-			'daikinDirective'
+			'daikinDirective',
+			'ngCookies'
 		]);
 
 	daikinApp.config(['$routeProvider', function($routeProvider) {
@@ -16,7 +17,7 @@
 				templateUrl: 'views/login.html',
 				controller: 'loginCtrl'
 			}).
-			when('/dashbroad', {
+			when('/dashbroad', { //dashboard
 				templateUrl: 'views/dashbroad.html',
 				controller: 'dashbroadCtrl'
 			}).
@@ -57,7 +58,19 @@
 				controller: 'quotationCtrl'
 			}).
 			otherwise({
-				redirectTo: '/quotations'
+				redirectTo: '/dashbroad'
 			});
+	}]).run(['$location', '$rootScope', 'Session', function($location, $rootScope, Session) {
+		$rootScope.$on('$locationChangeStart', function(event, next, prev) {
+
+			if (next.split('#')[1] !== '/login') {
+				if (!Session.isLoggedIn()) {
+					event.preventDefault();
+					$location.path('/login');
+				}
+			} else {
+				Session.logout(false);
+			}
+		});
 	}]);
 })();
