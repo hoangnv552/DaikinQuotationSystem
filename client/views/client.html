@@ -21,9 +21,9 @@
 				<th class="client-th7">Reference</th>
 			</tr>
 			<tr dir-paginate="client in clients | filter: query | itemsPerPage: pageSize" current-page="currentPage">
-				<td class="td-str"><a href="">{{client.Name}}</a></td>
+				<td class="td-str"><p>{{client.Name}}</p></td>
 				<td class="td-str"><p>{{client.clientAddress}}</p></td>
-				<td class="td-str"><a href="">{{client.clientName}}</a></td>
+				<td class="td-str"><a href="#/clients/{{client.clientName}}/view">{{client.clientName}}</a></td>
 				<td class="td-num">{{client.Tell}}</td>
 				<td class="td-num">{{client.Fax}}</td>
 				<td class="td-num">{{client.Email}}</td>

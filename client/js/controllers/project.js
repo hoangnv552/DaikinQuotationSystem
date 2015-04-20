@@ -1,14 +1,15 @@
 ;(function() {
 	'use strict';
 
-	var projectCtrl = function($scope, dataProject, Data, addProject, $location, dataClient) {
+	var projectCtrl = function($scope, dataProject, Data, addProject, $location, dataClient, dataProjecttWithId, $routeParams) {
 		$scope.currentPage = 1;
 		$scope.projects = [];
 		$scope.clients = dataClient;
 
 		if (dataProject) {
 			dataProject.$loaded().then(function(projects) {
-				projects.forEach(function(project) {
+				projects.forEach(function(project, key) {
+					project['key'] = key;
 					$scope.projects.push(project);
 				});
 			});
@@ -30,9 +31,26 @@
 				addProject(projectObj);
 				$location.path('/projects');
 			}
+		};
+
+		var id = $routeParams.id;
+
+		if (id) {
+			dataProject.$loaded().then(function(projects) {
+				projects.forEach(function(project, key) {
+					if (project.projectName == id) {
+						$scope.project = project;
+					}
+				});
+			});
 		}
+
+		$scope.backProject = function() {
+			$location.path('/projects');
+		};
+
 	}
 
-	projectCtrl.$inject = ['$scope', 'dataProject', 'Data', 'addProject', '$location', 'dataClient'];
+	projectCtrl.$inject = ['$scope', 'dataProject', 'Data', 'addProject', '$location', 'dataClient', 'dataProjecttWithId', '$routeParams'];
 	angular.module('daikinControllers').controller('projectCtrl', projectCtrl);
 })();

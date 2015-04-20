@@ -21,9 +21,9 @@
 				<th>Status</th>
 			</tr>
 			<tr dir-paginate="project in projects | filter: query | itemsPerPage: pageSize" current-page="currentPage">
-				<td class="td-str"><a href="">{{project.projectName}}</a></td>
-				<td class="td-str"><a href="">{{project.quotation}}</a></td>
-				<td class="td-str"><a href="">{{project.clientName}}</a></td>
+				<td class="td-str"><a href="#/projects/{{project.projectName}}/view">{{project.projectName}}</a></td>
+				<td class="td-str"><a href="#/quotations/edit/{{project.quotation}}">{{project.quotation}}</a></td>
+				<td class="td-str"><a href="#/clients/{{project.clientName}}/view">{{project.clientName}}</a></td>
 				<td class="td-num">{{project.revison}}</td>
 				<td class="td-num">{{project.createDate}}</td>
 				<td class="td-num">{{project.endDate}}</td>

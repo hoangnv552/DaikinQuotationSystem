@@ -40,6 +40,20 @@
 		return $firebaseObject(ref);
 	}]);
 
+	// get client with id
+	angular.module('daikinServices').factory('dataClientWithId', ['$firebaseObject', function($firebaseObject) {
+		return function(id) {
+			var url;
+			if (id) {
+				url = urlTmp + 'client/' + id;
+			}
+
+			var ref = new Firebase(url);
+
+			return $firebaseObject(ref);
+		}
+	}]);
+
 	// Data project
 	angular.module('daikinServices').factory('dataProject', ['$firebaseObject', function($firebaseObject) {
 
@@ -50,7 +64,7 @@
 	}]);
 
 	// Data quotation
-	angular.module('daikinServices').factory('dataQuotation', ['$firebaseObject', function($firebaseArray) {
+	angular.module('daikinServices').factory('dataQuotation', ['$firebaseObject', function($firebaseObject) {
 		return function(id) {
 			var url;
 			if (id) {
@@ -61,7 +75,7 @@
 
 			var ref = new Firebase(url);
 
-			return $firebaseArray(ref);
+			return $firebaseObject(ref);
 		}
 	}]);
 
@@ -139,6 +153,20 @@
 			var ref = new Firebase(url);
 
 			return $firebaseArray(ref).$add(client);
+		}
+	}]);
+
+	// get client with id
+	angular.module('daikinServices').factory('dataProjecttWithId', ['$firebaseObject', function($firebaseObject) {
+		return function(id) {
+			var url;
+			if (id) {
+				url = urlTmp + 'project/' + id;
+			}
+
+			var ref = new Firebase(url);
+
+			return $firebaseObject(ref);
 		}
 	}]);
 

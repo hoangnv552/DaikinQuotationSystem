@@ -650,8 +650,10 @@ table, th, td{
 .quotation-table input{
 	text-align: right;
 }
-
 input[type="text"],
 input[type="password"] {
 	padding: 0 10px;
+}
+.project-table .client-th3{
+	width: 180px;
 }

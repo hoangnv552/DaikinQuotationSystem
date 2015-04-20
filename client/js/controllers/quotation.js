@@ -12,9 +12,11 @@
         $scope.quotationStatuses = ['Approval', 'Pending'];
 
         dataQuotation().$loaded().then(function(quotations) {
-        	quotations.forEach(function(quotation) {
+        	quotations.forEach(function(quotation, key) {
+        		quotation['key'] = key;
         		$scope.quotations.push(quotation);
         	});
+        	console.log($scope.quotations);
         });
 
         /*
@@ -22,6 +24,18 @@
         */
         var id = $routeParams.id;
         if (id) {
+
+            // If id is name
+            dataQuotation().$loaded().then(function(quotations) {
+                quotations.forEach(function(quotation, key) {
+                    if (quotation.estimationName == id) {
+                        $scope.quotation = quotation;
+                    }
+                });
+                console.log($scope.quotations);
+            });
+
+            // If id is key
             $scope.quotation = dataQuotation(id);
             $scope.isView = true;
 
