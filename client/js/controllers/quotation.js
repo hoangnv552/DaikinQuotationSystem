@@ -37,7 +37,18 @@
 
             // If id is key
             $scope.quotation = dataQuotation(id);
+
             $scope.isView = true;
+
+            // Save quotation if id
+            $scope.saveQuotation = function(quotation) {
+                console.log(quotation);
+                addQuotation(quotation).then(function(response) {
+                    console.log(response.path.o[1]);
+
+                    //$location.path('/quotations');
+                });
+            };
 
         } else {
             $scope.isView = false;
@@ -61,7 +72,7 @@
 
                     $location.path('/quotations');
                 });
-            }
+            };
         }
 
         var totalModelPrice = function(models) {
