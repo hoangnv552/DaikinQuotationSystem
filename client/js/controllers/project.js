@@ -36,7 +36,13 @@
 		var id = $routeParams.id;
 
 		if (id) {
-			$scope.project = dataProjecttWithId(id);
+			dataProject.$loaded().then(function(projects) {
+				projects.forEach(function(project, key) {
+					if (project.projectName == id) {
+						$scope.project = project;
+					}
+				});
+			});
 		}
 
 		$scope.backProject = function() {

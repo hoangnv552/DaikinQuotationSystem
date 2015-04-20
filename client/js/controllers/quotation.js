@@ -23,6 +23,18 @@
         */
         var id = $routeParams.id;
         if (id) {
+
+            // If id is name
+            dataQuotation().$loaded().then(function(quotations) {
+                quotations.forEach(function(quotation, key) {
+                    if (quotation.estimationName == id) {
+                        $scope.quotation = quotation;
+                    }
+                });
+                console.log($scope.quotations);
+            });
+
+            // If id is key
             $scope.quotation = dataQuotation(id);
             $scope.isView = true;
 

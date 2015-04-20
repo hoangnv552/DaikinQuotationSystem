@@ -23,12 +23,14 @@
 		var id = $routeParams.id;
 		if (id) {
 			dataClient.$loaded().then(function(clients) {
-			clients.forEach(function(client, key) {
-				client['key'] = key;
-				$scope.clients.push(client);
+				clients.forEach(function(client, key) {
+					// console.log(client.clientName);
+					if (client.clientName == id) {
+						$scope.client = client;
+					}
+
+				});
 			});
-		});
-			$scope.client = dataClientWithId(id);
 		}
 
 		$scope.backClient = function() {
