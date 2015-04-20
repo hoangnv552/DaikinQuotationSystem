@@ -4,6 +4,7 @@
 	var projectCtrl = function($scope, dataProject, Data, addProject, $location, dataClient) {
 		$scope.currentPage = 1;
 		$scope.projects = [];
+		$scope.clients = dataClient;
 
 		if (dataProject) {
 			dataProject.$loaded().then(function(projects) {

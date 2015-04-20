@@ -308,6 +308,7 @@ table, th, td{
 .td-title {
 	width: 28%;
 	padding-left: 47px;
+	font-weight: bolder;
 }
 .box-quotation-project {
 	width: 585px;
