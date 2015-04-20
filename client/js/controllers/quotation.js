@@ -108,12 +108,17 @@
             ngDialog.open({
                 template: 'views/popup/import.html',
                 controller: ['$scope', 'dataModels', 'dataQuotation', 'addModel', '$rootScope', function($scope, dataModels, dataQuotation, addModel, $rootScope) {
-                    $scope.models = dataModels();
-
-                    $scope.selectedIds = {};
+                    $scope.models = [];
+                    $scope.selectedIds = [];
                     $scope.modelId = [];
-
                     $scope.selectedTab = tabId;
+
+                    dataModels().$loaded().then(function(models) {
+                        models.forEach(function(model, key) {
+                            model['key'] = key;
+                            $scope.models.push(model);
+                        });
+                    });
 
                     /*
                     * Check if a model is exist in a model list or not
@@ -130,28 +135,44 @@
                         return ret;
                     };
 
+                    var getModelByKey = function(models, key) {
+                        var ret = null;
+
+                        angular.forEach(models, function(model) {
+                            if (model.key === key) {
+                                ret = model;
+                                return;
+                            }
+                        });
+
+                        return ret;
+                    }
+
+                    $scope.toggleSelection = function(modelKey) {
+                        var idx = $scope.selectedIds.indexOf(modelKey);
+                        if (idx < 0) {
+                            $scope.selectedIds.push(modelKey);
+                        } else {
+                            $scope.selectedIds.splice(idx, 1);
+                        }
+                    };
+
                     // Add models
                     $scope.selectModelId = function() {
-                        var keys = Object.keys($scope.selectedIds);
+                        var keys = $scope.selectedIds;
                         var index;
                         var model;
                         var models = [];
 
                         for (var i = 0; i < keys.length; i++) {
-                            index = keys[i];
-                            if ($scope.selectedIds[index]) {
+                            if (id) {
+                                model = angular.extend({
+                                    addAt: Date.now()
+                                }, getModelByKey($scope.models, keys[i]));
 
-                                if (id) {
-                                    model = angular.extend({
-                                        addAt: Date.now()
-                                    }, $scope.models[index]);
-
-                                    console.log(model);
-
-                                    addModel(id).$add(model);
-                                } else {
-                                    models = models.concat($scope.models[index]);
-                                }
+                                addModel(id).$add(model);
+                            } else {
+                                models = models.concat(getModelByKey($scope.models, keys[i]));
                             }
                         }
 
@@ -167,7 +188,18 @@
                         }
 
                         $scope.closeThisDialog();
-                    }
+                    };
+
+                    $scope.importCSV = function() {
+                        var csvFile = document.getElementById('csv-file');
+
+                        if (csvFile.files.length === 0) {
+                            return;
+                        }
+
+                        $rootScope.models = dataModels();
+                        $scope.closeThisDialog();
+                    };
                 }],
                 className: 'ngdialog-theme-plain',
                 showClose: true

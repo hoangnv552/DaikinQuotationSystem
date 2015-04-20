@@ -1,11 +1,11 @@
 <div id="daikinModal">
     <div class="menuModa">
         <daikin-tabs tab="selectedTab">
-            <daikin-pane class="heo" title="Expess Import">
+            <daikin-pane class="heo" title="Express Import">
                 <div class="expess">
                     <p>Import Express CSV File</p>
-                    <input type="file" class="expess-input">
-                    <button>Import</button>
+                    <input type="file" id='csv-file' class="expess-input">
+                    <button ng-click="importCSV()">Import</button>
                 </div>
             </daikin-pane>
             <daikin-pane title="Outdoor Untils">
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="out-search-text">
-                        <input type="text" class="out-input">
+                        <input type="text" ng-model="modelQuery" class="out-input">
                         <button>Search</button>
                     </div>
                     <div class="import-table">
@@ -33,8 +33,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="model in models track by $index">
-                                    <td class="td-num"><input ng-model="selectedIds[$index]" type="checkbox"></td>
+                                <tr ng-repeat="model in models | filter:modelQuery">
+                                    <td class="td-num"><input ng-model="selectedIds" ng-click="toggleSelection(model.key)" ng-check="selectedIds.indexOf(model.key) >= 0" type="checkbox"></td>
                                     <td class="td-str"><p>{{model.model}}</p></td>
                                     <td class="td-str"><p>{{model.unit}}</p></td>
                                 </tr>
