@@ -2,7 +2,7 @@
 	'use strict';
 	var menuController = function($scope, $location, Session) {
 
-		$scope.isLoggedIn = function() {return true;
+		$scope.isLoggedIn = function() {
 			return Session.isLoggedIn();
 		};
 
