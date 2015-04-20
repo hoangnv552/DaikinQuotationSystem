@@ -10,40 +10,40 @@
 		<table class="table-style-common">
 			<tr>
 				<td class="td-title">Company name:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="client.Name" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Address:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="client.clientAddress" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Department:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="client.Department" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Name:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="client.clientName" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Tel:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="client.Tell" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Fax:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="client.Fax" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Mail:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="client.Email" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Reference:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="client.Reference" class="input-project"></td>
 			</tr>
 		</table>
 
 		<div class="save-button">
-			<button class="save">Save</button>
+			<button class="save" ng-click="addClient()">Save</button>
 			<button class="cancel">Cancel</button>
 		</div>
 	</div>

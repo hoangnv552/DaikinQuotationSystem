@@ -120,4 +120,26 @@
 		}
 	}]);
 
+	// add client
+	angular.module('daikinServices').factory('addClient', ['$firebaseArray', function($firebaseArray) {
+		return function(client) {
+
+			var url = urlTmp + 'client/';
+			var ref = new Firebase(url);
+
+			return $firebaseArray(ref).$add(client);
+		}
+	}]);
+
+	// add project
+	angular.module('daikinServices').factory('addProject', ['$firebaseArray', function($firebaseArray) {
+		return function(client) {
+
+			var url = urlTmp + 'project/';
+			var ref = new Firebase(url);
+
+			return $firebaseArray(ref).$add(client);
+		}
+	}]);
+
 })();

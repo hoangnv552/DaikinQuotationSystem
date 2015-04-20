@@ -10,64 +10,53 @@
 		<table class="table-style-common">
 			<tr>
 				<td class="td-title">Project name:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="project.projectName" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Project address:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="project.address" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Client name:</td>
 				<td>
-					<select class="input-project">
-						<option>Malay Annals</option>
-						<option>Adam</option>
-						<option>Client name1</option>
-						<option>Client name2</option>
-						<option>Client name3</option>
-						<option>Client name4</option>
-						<option>Client name5</option>
-						<option>Client name6</option>
-						<option>Client name7</option>
-						<option>Client name8</option>
-						<option>Client name9</option>
-						<option>Client name10</option>
-						<option>Client name11</option>
+					<select class="input-project" ng-model="project.clientName">
+						<option ng-repeat="(key, client) in clients">{{client.clientName}}</option>
+
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td class="td-title">Address:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="project.adress" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Department:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="project.Department" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Name:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="project.estimationName" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Tel:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="project.Tell" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Fax:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="project.Fax" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Email:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="project.Email" class="input-project"></td>
 			</tr>
 			<tr>
 				<td class="td-title">Reference:</td>
-				<td><input type="text" class="input-project"></td>
+				<td><input type="text" ng-model="project.Reference" class="input-project"></td>
 			</tr>
 		</table>
 
 		<div class="save-button">
-			<button class="save">Save</button>
+			<button class="save" ng-click="addProject()">Save</button>
 			<button class="cancel">Cancel</button>
 		</div>
 	</div>
