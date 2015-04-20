@@ -9,6 +9,7 @@
         $scope.currentPage = 1;
         $scope.quotations = [];
         $rootScope.models = {};
+        $scope.quotationStatuses = ['Approval', 'Pending'];
 
         dataQuotation().$loaded().then(function(quotations) {
         	quotations.forEach(function(quotation) {

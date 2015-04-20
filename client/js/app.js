@@ -63,14 +63,14 @@
 	}]).run(['$location', '$rootScope', 'Session', function($location, $rootScope, Session) {
 		$rootScope.$on('$locationChangeStart', function(event, next, prev) {
 
-			// if (next.split('#')[1] !== '/login') {
-			// 	if (!Session.isLoggedIn()) {
-			// 		event.preventDefault();
-			// 		$location.path('/login');
-			// 	}
-			// } else {
-			// 	Session.logout(false);
-			// }
+			if (next.split('#')[1] !== '/login') {
+				if (!Session.isLoggedIn()) {
+					event.preventDefault();
+					$location.path('/login');
+				}
+			} else {
+				Session.logout(false);
+			}
 		});
 
 		$rootScope.pageSize = 5;
