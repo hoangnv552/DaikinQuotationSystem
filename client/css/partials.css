@@ -590,6 +590,9 @@ table, th, td{
 .td-width-10{
 	width: 10%;
 }
+.td-width-11{
+	width: 6%;
+}
 .td-note{
 	height: 100px;
 	vertical-align: top;
