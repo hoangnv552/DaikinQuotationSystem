@@ -168,8 +168,15 @@ table, th, td{
 .quotation-input-right .input3{
 	margin-left: 54px;
 }
+.quotation-input-left .input4{
+	margin-left: 38px;
+}
 .quotation-input-right .input4{
-	margin-left: 50px;
+	margin-left: 42px;
+}
+.inputImg{
+	position: absolute !important;
+	bottom: 36px !important;
 }
 .clientNameSelect{
 	width: 407px !important;
