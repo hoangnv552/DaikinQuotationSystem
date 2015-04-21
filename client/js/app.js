@@ -19,7 +19,7 @@
 			}).
 			when('/dashbroad', { //dashboard
 				templateUrl: 'views/dashbroad.html',
-				controller: 'dashbroadCtrl'
+				controller: 'projectCtrl'
 			}).
 			when('/quotations', {
 				templateUrl: 'views/quotation.html',

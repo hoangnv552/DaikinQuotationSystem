@@ -13,18 +13,15 @@
 		});
 
 		$scope.addClient = function() {
-			console.log($scope.client);
-			addClient($scope.client);
-			if ($scope.client) {
+			addClient($scope.client).then(function() {
 				$location.path('/clients');
-			}
+			});
 		};
 
 		var id = $routeParams.id;
 		if (id) {
 			dataClient.$loaded().then(function(clients) {
 				clients.forEach(function(client, key) {
-					// console.log(client.clientName);
 					if (client.clientName == id) {
 						$scope.client = client;
 					}

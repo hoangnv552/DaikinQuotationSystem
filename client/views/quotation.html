@@ -12,8 +12,8 @@
     <div class="project-table">
         <table ng-table="tableParams" class="table">
             <tr>
-                <th class="th-width">Project name</th>
                 <th>Quotation title</th>
+                <th class="th-width">Project name</th>
                 <th>Client name</th>
                 <th>Revision</th>
                 <th>Create date</th>
@@ -22,9 +22,9 @@
                 <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
             </tr>
             <tr dir-paginate="(key, quotation) in quotations | filter: query | itemsPerPage: pageSize" current-page="currentPage">
-                <td class="td-str"><a href="#/projects/{{quotation.projectName}}/view">{{quotation.projectName}}</a></td>
-                <td class="td-str"><a href="#/quotations/edit/{{quotation.key}}">{{quotation.estimationName}}</a></td>
-                <td class="td-str"><p>{{quotation.clientName}}</p></td>
+                <td class="td-str left"><a href="#/quotations/edit/{{quotation.key}}">{{quotation.estimationName}}</a></td>
+                <td class="td-str left"><a href="#/projects/{{quotation.projectName}}/view">{{quotation.projectName}}</a></td>
+                <td class="td-str left"><a href="#/clients/{{quotation.clientName}}/view">{{quotation.clientName}}</a></td>
                 <td class="td-num">{{quotation.revison}}</td>
                 <td class="td-num">{{quotation.createDate}}</td>
                 <td class="td-num">{{quotation.endDate}}</td>
