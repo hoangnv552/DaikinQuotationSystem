@@ -25,7 +25,7 @@
             <label>Quotation No:</label>
             <input type="text" ng-model="quotation.estimationName" class="input1">
             <br>
-            <label>Revison:</label>
+            <label>Revision:</label>
             <input type="text" ng-model="quotation.revison" class="input3">
             <br>
             <label>End date:</label>
@@ -78,7 +78,7 @@
                 </tr>
             </tbody>
             <tbody ng-if="!isView">
-                <tr ng-repeat="(key, item) in models">
+                <tr ng-repeat="(key, item) in models track by $index">
                     <td class="td-num">{{$index + 1}}</td>
                     <td class="td-str">
                         <span ng-hide="editMode"><p>{{item.model}}</p></span>
