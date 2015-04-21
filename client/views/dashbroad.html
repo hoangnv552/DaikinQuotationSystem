@@ -41,24 +41,24 @@
 	        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="./views/pagination.tpl.html"></dir-pagination-controls>
 	    </div>
 	    <p class="clearfix"></p>
-		<table class="quotation-table">
+		<table ng-table="tableParams" class="table">
 			<tr>
-				<td class="table-title">Project Name</td>
-				<td class="table-title">Quotation title</td>
-				<td class="table-title">Client Name</td>
-				<td class="table-title">Revision</td>
-				<td class="table-title">Create date</td>
-				<td class="table-title">End date</td>
-				<td class="table-title">Status</td>
-			<tr>
-			<tr dir-paginate="quotation in quotations | itemsPerPage: pageSize" current-page="currentPage">
-				<td><a href="#/projects/{{quotation.projectName}}/view">{{quotation.projectName}}</a></td>
-				<td><a href="#/quotations/edit/{{quotation.estimationName}}">{{quotation.estimationName}}</a></td>
-				<td><p>{{quotation.clientName}}</p></td>
-				<td>{{quotation.revison}}</td>
-				<td>{{quotation.createDate}}</td>
-				<td>{{quotation.endDate}}</td>
-				<td>{{quotation.status}}</td>
+				<th class="th-width">Project Name</th>
+				<th>Quotation title</th>
+				<th>Client Name</th>
+				<th>Revision</th>
+				<th>Create date</th>
+				<th>End date</th>
+				<th>Status</th>
+			</tr>
+			<tr dir-paginate="project in projects | filter: query | itemsPerPage: pageSize" current-page="currentPage">
+				<td class="td-str"><a href="#/projects/{{project.projectName}}/view">{{project.projectName}}</a></td>
+				<td class="td-str"><a href="#/quotations/edit/{{project.quotation}}">{{project.quotation}}</a></td>
+				<td class="td-str"><a href="#/clients/{{project.clientName}}/view">{{project.clientName}}</a></td>
+				<td class="td-num">{{project.revison}}</td>
+				<td class="td-num">{{project.createDate}}</td>
+				<td class="td-num">{{project.endDate}}</td>
+				<td class="td-num">{{project.status}}</td>
 			</tr>
 		</table>
 		<div class = "button-group clearfix">
