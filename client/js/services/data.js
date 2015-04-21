@@ -94,6 +94,15 @@
 			return $firebaseArray(ref);
 		}
 	}]);
+
+	// Data models hard data
+	angular.module('daikinServices').factory('dataModelsHard', ['$firebaseArray', function($firebaseArray) {
+
+		var url = urlTmp + 'modelsHard/';
+		var ref = new Firebase(url);
+
+		return $firebaseArray(ref);
+	}]);
 	// Data client
 	angular.module('daikinServices').factory('addModel', ['$firebaseArray', function($firebaseArray) {
 		return function(id) {

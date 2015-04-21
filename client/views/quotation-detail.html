@@ -53,6 +53,7 @@
                 <th class="quotation-th2">Model</th>
                 <th class="quotation-th3">Description</th>
                 <th class="quotation-th4">Qty</th>
+                <th class="quotation-th4">Unit</th>
                 <th class="quotation-th5">List price</th>
                 <th class="quotation-th6">Price</th>
                 <th class="quotation-th7">Amount</th>
@@ -69,6 +70,7 @@
                     <td class="td-num">
                         <input type="text" class="qty" ng-model="item.qty">
                     </td>
+                    <td class="td-num"><p>{{item.unit}}</p></td>
                     <td class="td-num">{{item.listPrice}}</td>
                     <td class="td-num">
                         <input type="text" class="price" ng-model="item.price">
@@ -88,6 +90,7 @@
                     <td class="td-num">
                         <input type="text" class="qty" ng-model="item.qty">
                     </td>
+                    <td class="td-num"><p>{{item.unit}}</p></td>
                     <td class="td-num">{{item.listPrice}}</td>
                     <td class="td-num">
                         <input type="text" class="price" ng-model="item.price">
@@ -100,8 +103,8 @@
     </div>
     <div class="quotation-total">
         <label><p>Subtotal</p></label><div class="total-number"><p>{{totalAmount()}}</p></div>
-        <label><p>Tax</p></label><div class="total-number"><p><input ng-model="tax"></p></div>
-        <label><p>Total</p></label><div class="total-number"><p>{{totalAmount() - tax}}</p></div>
+        <label><p>Tax (10%)</p></label><div class="total-number" ng-init="tax = 0.1"><p>{{totalAmount()*tax}}</p></div>
+        <label><p>Total</p></label><div class="total-number"><p>{{totalAmount() - (totalAmount()*tax)}}</p></div>
     </div>
     <div class="button">
         <button ng-click="importDialog(1)"><a href="">Add<a></button>

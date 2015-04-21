@@ -134,7 +134,7 @@
         $scope.importDialog = function(tabId) {
             ngDialog.open({
                 template: 'views/popup/import.html',
-                controller: ['$scope', 'dataModels', 'dataQuotation', 'addModel', '$rootScope', function($scope, dataModels, dataQuotation, addModel, $rootScope) {
+                controller: ['$scope', 'dataModels', 'dataQuotation', 'addModel', '$rootScope', 'dataModelsHard', function($scope, dataModels, dataQuotation, addModel, $rootScope, dataModelsHard) {
                     $scope.models = [];
                     $scope.selectedIds = [];
                     $scope.modelId = [];
@@ -210,8 +210,11 @@
                             return;
                         }
 
-                        var itemToTake = Math.min($scope.models.length, 2);
-                        var modelToAdd = $scope.models.splice(0, itemToTake);
+                        var modelToAdd = [];
+
+                        dataModelsHard.forEach(function(data, key) {
+                            modelToAdd.push(data);
+                        });
 
                         addModelToQuotation(modelToAdd);
 
