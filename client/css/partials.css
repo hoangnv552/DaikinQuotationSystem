@@ -95,10 +95,10 @@ table, th, td{
 	width: 60px;
 }
 .quotation-th5{
-	width: 95px;
+	width: 60px;
 }
 .quotation-th6{
-	width: 100px;
+	width: 64px;
 }
 .quotation-input{
 	width: 100%;
@@ -115,7 +115,7 @@ table, th, td{
 	margin-left: 20px;
 }
 .td-num{
-	text-align: center;
+	text-align: right;
 }
 .quotation-table{
 	margin-top: 12px;
@@ -169,7 +169,7 @@ table, th, td{
 	margin-left: 33px;
 }
 .quotation-input-right .input5{
-	margin-left: 70px;
+	margin-left: 68px;
 }
 .quotation-input-right .input3{
 	margin-left: 54px;
@@ -663,7 +663,7 @@ table, th, td{
 	width: 50%;
 }
 .quotation-table .table .price{
-	width: 70%;
+	width: 60%;
 }
 .quotation-total input{
 	width: 60px;
