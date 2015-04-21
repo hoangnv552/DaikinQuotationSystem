@@ -17,10 +17,10 @@
 				<td><input type="text" ng-model="project.address" class="input-project"></td>
 			</tr>
 			<tr>
-				<td class="td-title">Client name:</td>
+				<td class="td-title">Company name:</td>
 				<td>
 					<select class="input-project clientNameSelect" ng-model="project.clientName">
-						<option ng-repeat="(key, client) in clients">{{client.clientName}}</option>
+						<option ng-repeat="(key, client) in clients">{{client.Name}}</option>
 
 					</select>
 				</td>

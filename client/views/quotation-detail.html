@@ -9,18 +9,19 @@
                 <option ng-repeat="name in projectName" value="{{name.projectName}}">{{name.projectName}}</option>
             </select>
             <br>
-            <label>Client name:</label>
-            <select ng-model="quotation.clientName" class="input2">
-                <option ng-repeat="name in clientName" value="{{name.clientName}}">{{name.clientName}}</option>
+            <label>Quotation title:</label>
+            <input type="text" ng-model="quotation.quotationTitle" class="input2">
+            <br>
+            <label>Company name:</label>
+            <select ng-model="quotation.clientName" class="input3">
+                <option ng-repeat="name in clientName" value="{{name.Name}}">{{name.Name}}</option>
             </select>
             <br>
-            <label>Create date:</label>
-            <input type="text" ng-model="quotation.createDate" class="input2">
-            <img src="./img/date-icon.png">
+            <label>Person in charge:</label>
+            <input type="text" ng-model="quotation.personCharge" class="input4">
             <br>
-            <label>End date:</label>
-            <input type="text" ng-model="quotation.endDate" class="input4">
-            <img src="./img/date-icon.png" class="inputImg">
+            <label>Reference:</label>
+            <input type="text" ng-model="quotation.reference" class="input5">
         </div>
         <div class="quotation-input-right">
             <label>Quotation No:</label>
@@ -29,8 +30,13 @@
             <label>Revision:</label>
             <input type="text" ng-model="quotation.revison" class="input3">
             <br>
-            <label>Reference:</label>
-            <input type="text" ng-model="quotation.reference" class="input4">
+            <label>Create date:</label>
+            <input type="text" ng-model="quotation.createDate" class="input2">
+            <img src="./img/date-icon.png" class="crateDateInput">
+            <br>
+            <label>End date:</label>
+            <input type="text" ng-model="quotation.endDate" class="input4">
+            <img src="./img/date-icon.png">
             <br>
             <label>Status:</label>
             <select ng-model="quotation.status" class="input5">

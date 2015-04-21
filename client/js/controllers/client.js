@@ -22,7 +22,7 @@
 		if (id) {
 			dataClient.$loaded().then(function(clients) {
 				clients.forEach(function(client, key) {
-					if (client.clientName == id) {
+					if (client.Name == id) {
 						$scope.client = client;
 					}
 
