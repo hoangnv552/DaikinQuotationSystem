@@ -1,35 +1,79 @@
 ;(function() {
 	'use strict';
 
-	var projectCtrl = function($scope, dataProject, Data, addProject, $location, dataClient, dataProjecttWithId, $routeParams) {
+	var projectCtrl = function($scope, dataProject, dataQuotation, Data, addProject, $location, dataClient, dataProjecttWithId, $routeParams, $q) {
 		$scope.currentPage = 1;
 		$scope.projects = [];
+		$scope.projectToDisplay = [];
 		$scope.clients = dataClient;
+		$scope.quotations = [];
 
 		if (dataProject) {
-			dataProject.$loaded().then(function(projects) {
+			var loadJob = [], promise;
+
+			promise = dataProject.$loaded().then(function(projects) {
 				projects.forEach(function(project, key) {
 					project['key'] = key;
 					$scope.projects.push(project);
 				});
 			});
+			loadJob.push(promise);
+
+			var arrContains = function(arr, elementToSearch, keyName) {
+				var isContained = false;
+
+				angular.forEach(arr, function(element) {
+					if (element[keyName] === elementToSearch[keyName]) {
+						isContained = true;
+						return;
+					}
+				})
+
+				return isContained;
+			};
+
+			//Sort by projectName
+			var compareSubjectFunction = function(a,b) {
+			  if (a.projectName < b.projectName)
+			     return -1;
+			  if (a.projectName > b.projectName)
+			    return 1;
+			  return 0;
+			}
+
+			promise = dataQuotation().$loaded().then(function(quotations) {
+				quotations.forEach(function(quotation, key) {
+					quotation['key'] = key;
+					$scope.quotations.push(quotation);
+				});
+
+				$scope.quotations.sort(compareSubjectFunction);
+			});
+			loadJob.push(promise);
+
+			$q.all(loadJob).then(function() {
+				//Get all quotations to display
+				$scope.projectToDisplay = $scope.quotations;
+
+				//Add projects
+				angular.forEach($scope.projects, function(project) {
+					if (!arrContains($scope.projectToDisplay, project, 'projectName')) {
+						$scope.projectToDisplay.push({
+							projectName: project.projectName,
+							clientName: project.clientName
+						});
+					}
+				});
+			});
 		}
 
 		$scope.addProject = function() {
-			console.log($scope.project);
-
-			var projectObj = angular.extend({
-				revison: "1.0",
-				createDate: "07-Apr-2015",
-				endDate: "20-Apr-2015",
-				status: "Unapproval",
-				quotation: "Estimation 1"
-
-			}, $scope.project);
+			var projectObj = $scope.project;
 
 			if (projectObj) {
-				addProject(projectObj);
-				$location.path('/projects');
+				addProject(projectObj).then(function() {
+					$location.path('/projects');
+				});
 			}
 		};
 
@@ -51,6 +95,6 @@
 
 	}
 
-	projectCtrl.$inject = ['$scope', 'dataProject', 'Data', 'addProject', '$location', 'dataClient', 'dataProjecttWithId', '$routeParams'];
+	projectCtrl.$inject = ['$scope', 'dataProject', 'dataQuotation', 'Data', 'addProject', '$location', 'dataClient', 'dataProjecttWithId', '$routeParams', '$q'];
 	angular.module('daikinControllers').controller('projectCtrl', projectCtrl);
 })();

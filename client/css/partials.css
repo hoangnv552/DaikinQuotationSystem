@@ -666,3 +666,6 @@ input[type="password"] {
 .project-table .client-th3{
 	width: 180px;
 }
+.left {
+	text-align: left;
+}

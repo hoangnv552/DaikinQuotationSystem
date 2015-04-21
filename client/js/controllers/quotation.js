@@ -10,6 +10,23 @@
         $scope.quotations = [];
         $rootScope.models = {};
         $scope.quotationStatuses = ['Approval', 'Pending'];
+        $scope.projectName = [];
+        $scope.clientName = [];
+
+        dataProject.$loaded().then(function(projects) {
+            projects.forEach(function(project, key) {
+                project['key'] = key;
+                $scope.projectName.push(project);
+            });
+        });
+
+
+        dataClient.$loaded().then(function(clients) {
+            clients.forEach(function(client, key) {
+                client['key'] = key;
+                $scope.clientName.push(client);
+            });
+        });
 
         dataQuotation().$loaded().then(function(quotations) {
         	quotations.forEach(function(quotation, key) {
@@ -102,11 +119,7 @@
             $rootScope.models.splice(key, 1);
         }
 
-        // Get project name
-        $scope.projectName = dataProject;
 
-        // Get client name
-        $scope.clientName = dataClient;
 
         /*
         * Edit quotation
