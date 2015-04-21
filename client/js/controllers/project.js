@@ -60,16 +60,21 @@
 					if (!arrContains($scope.projectToDisplay, project, 'projectName')) {
 						$scope.projectToDisplay.push({
 							projectName: project.projectName,
-							clientName: project.clientName
+							clientName: project.clientName,
+							updateAt: project.updateAt
 						});
 					}
+				});
+				console.log($scope.projectToDisplay);
+				$scope.projectToDisplay.sort(function(c1, c2) {
+					return c2.updateAt - c1.updateAt;
 				});
 			});
 		}
 
 		$scope.addProject = function() {
 			var projectObj = $scope.project;
-
+			projectObj.updateAt = Date.now();
 			if (projectObj) {
 				addProject(projectObj).then(function() {
 					$location.path('/projects');

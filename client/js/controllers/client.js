@@ -10,9 +10,14 @@
 				client['key'] = key;
 				$scope.clients.push(client);
 			});
+
+			$scope.clients.sort(function(c1, c2) {
+				return c2.updateAt - c1.updateAt;
+			});
 		});
 
 		$scope.addClient = function() {
+			$scope.client.updateAt = Date.now();
 			addClient($scope.client).then(function() {
 				$location.path('/clients');
 			});
@@ -25,7 +30,6 @@
 					if (client.Name == id) {
 						$scope.client = client;
 					}
-
 				});
 			});
 		}

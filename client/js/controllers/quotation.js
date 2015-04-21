@@ -33,6 +33,10 @@
         		quotation['key'] = key;
         		$scope.quotations.push(quotation);
         	});
+            console.log($scope.quotations);
+            $scope.quotations.sort(function(c1, c2) {
+                return c2.updateAt - c1.updateAt;
+            });
         });
 
         /*
@@ -76,7 +80,7 @@
                 }
 
                 // var quotationsItem =
-
+                quotation.updateAt = Date.now();
                 addQuotation(quotation).then(function(response) {
                     $location.path('/quotations');
                 });
