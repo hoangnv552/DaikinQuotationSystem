@@ -52,8 +52,8 @@
 				<td class="table-title">Status</td>
 			<tr>
 			<tr dir-paginate="quotation in quotations | itemsPerPage: pageSize" current-page="currentPage">
-				<td><a href="#">{{quotation.projectName}}</a></td>
-				<td><a href="">{{quotation.estimationName}}</a></td>
+				<td><a href="#/projects/{{quotation.projectName}}/view">{{quotation.projectName}}</a></td>
+				<td><a href="#/quotations/edit/{{quotation.estimationName}}">{{quotation.estimationName}}</a></td>
 				<td><p>{{quotation.clientName}}</p></td>
 				<td>{{quotation.revison}}</td>
 				<td>{{quotation.createDate}}</td>
