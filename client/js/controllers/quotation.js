@@ -16,7 +16,6 @@
         		quotation['key'] = key;
         		$scope.quotations.push(quotation);
         	});
-        	console.log($scope.quotations);
         });
 
         /*
@@ -32,7 +31,6 @@
                         $scope.quotation = quotation;
                     }
                 });
-                console.log($scope.quotations);
             });
 
             // If id is key
@@ -42,10 +40,7 @@
 
             // Save quotation if id
             $scope.saveQuotation = function(quotation) {
-                console.log(quotation);
                 addQuotation(quotation).then(function(response) {
-                    console.log(response.path.o[1]);
-
                     //$location.path('/quotations');
                 });
             };
@@ -63,13 +58,9 @@
 
                 }
 
-                console.log(quotation);
-
                 // var quotationsItem =
 
                 addQuotation(quotation).then(function(response) {
-                    console.log(response.path.o[1]);
-
                     $location.path('/quotations');
                 });
             };
@@ -103,14 +94,11 @@
 
         // Remove model
         $scope.removeQoute = function(model) {
-            console.log(model);
             var deletea = deleteModel(id, model);
-            console.log(deletea);
         };
 
         // Remove model add
         $scope.removeQouteAdd = function(models, key) {
-            console.log(key);
             $rootScope.models.splice(key, 1);
         }
 
@@ -146,21 +134,6 @@
                         });
                     });
 
-                    /*
-                    * Check if a model is exist in a model list or not
-                    */
-                    var modelExist = function(models, model) {
-                        var ret = false;
-                        angular.forEach(models, function(aModel) {
-                            if (aModel.$id == model.$id) {
-                                ret = true
-                                return;
-                            }
-                        });
-
-                        return ret;
-                    };
-
                     var getModelByKey = function(models, key) {
                         var ret = null;
 
@@ -173,6 +146,16 @@
 
                         return ret;
                     }
+
+                    var addModelToQuotation = function(models) {
+                        if ($rootScope.models.length) {
+                            angular.forEach(models, function(model) {
+                                $rootScope.models.push(model);
+                            });
+                        } else {
+                            $rootScope.models = models;
+                        }
+                    };
 
                     $scope.toggleSelection = function(modelKey) {
                         var idx = $scope.selectedIds.indexOf(modelKey);
@@ -202,16 +185,7 @@
                             }
                         }
 
-                        if ($rootScope.models.length) {
-                            // Add only newly added models
-                            angular.forEach(models, function(model) {
-                                if (!modelExist($rootScope.models, model)) {
-                                    $rootScope.models.push(model);
-                                }
-                            });
-                        } else {
-                            $rootScope.models = models;
-                        }
+                        addModelToQuotation(models);
 
                         $scope.closeThisDialog();
                     };
@@ -223,7 +197,11 @@
                             return;
                         }
 
-                        $rootScope.models = dataModels();
+                        var itemToTake = Math.min($scope.models.length, 2);
+                        var modelToAdd = $scope.models.splice(0, itemToTake);
+
+                        addModelToQuotation(modelToAdd);
+
                         $scope.closeThisDialog();
                     };
                 }],
@@ -240,7 +218,6 @@
                 template: 'views/popup/detail.html',
                 controller: ['$scope', function($scope) {
                     $scope.qoutationView = quotation;
-                    console.log($scope.qoute);
                 }],
                 className: 'ngdialog-theme-dialog',
                 showClose: false
