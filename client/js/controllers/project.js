@@ -9,11 +9,12 @@
 		$scope.quotations = [];
 
 		if (dataProject) {
-			var loadJob = [], promise;
+			var loadJob = [];
+			var promise;
 
 			promise = dataProject.$loaded().then(function(projects) {
 				projects.forEach(function(project, key) {
-					project['key'] = key;
+					project.key = key;
 					$scope.projects.push(project);
 				});
 			});
@@ -27,23 +28,25 @@
 						isContained = true;
 						return;
 					}
-				})
+				});
 
 				return isContained;
 			};
 
 			//Sort by projectName
-			var compareSubjectFunction = function(a,b) {
-			  if (a.projectName < b.projectName)
-			     return -1;
-			  if (a.projectName > b.projectName)
-			    return 1;
-			  return 0;
-			}
+			var compareSubjectFunction = function(a, b) {
+				if (a.projectName < b.projectName) {
+					return -1;
+				}
+				if (a.projectName > b.projectName) {
+					return 1;
+				}
+				return 0;
+			};
 
 			promise = dataQuotation().$loaded().then(function(quotations) {
 				quotations.forEach(function(quotation, key) {
-					quotation['key'] = key;
+					quotation.key = key;
 					$scope.quotations.push(quotation);
 				});
 
@@ -65,7 +68,7 @@
 						});
 					}
 				});
-				console.log($scope.projectToDisplay);
+				// console.log($scope.projectToDisplay);
 				$scope.projectToDisplay.sort(function(c1, c2) {
 					return c2.updateAt - c1.updateAt;
 				});
@@ -87,7 +90,7 @@
 		if (id) {
 			dataProject.$loaded().then(function(projects) {
 				projects.forEach(function(project, key) {
-					if (project.projectName == id) {
+					if (project.projectName === id) {
 						$scope.project = project;
 					}
 				});
@@ -98,7 +101,7 @@
 			$location.path('/projects');
 		};
 
-	}
+	};
 
 	projectCtrl.$inject = ['$scope', 'dataProject', 'dataQuotation', 'Data', 'addProject', '$location', 'dataClient', 'dataProjecttWithId', '$routeParams', '$q'];
 	angular.module('daikinControllers').controller('projectCtrl', projectCtrl);
